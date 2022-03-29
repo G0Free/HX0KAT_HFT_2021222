@@ -8,6 +8,11 @@ namespace HX0KAT_HFT_2021222.Models
 {
     public class Customer : Entity
     {
+        public override int Id { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
     }
 }
