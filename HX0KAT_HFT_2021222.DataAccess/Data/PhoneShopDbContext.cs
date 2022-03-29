@@ -34,13 +34,50 @@ namespace HX0KAT_HFT_2021222.DataAccess.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Phone>(); //NOT DONE
+            //modelBuilder.Entity<Customer>(entity =>
+            //{
+            //    entity
+            //    .HasOne(customer => customer.Phone)
+            //    //.WithOne(phone => phone.Customer)
+            //    .HasForeignKey(customer => customer.PhoneId)
+            //    .OnDelete(DeleteBehavior.Cascade);
+            //});
 
-            modelBuilder.Entity<Customer>(); //NOT DONE
+            modelBuilder.Entity<Repairer>(entity =>
+            {
+                entity
+                .HasMany(repairer => repairer.Phones)
+                .WithOne(phone => phone.Repairer)
+                .HasForeignKey(phone => phone.RepairerId)
+                .OnDelete(DeleteBehavior.Cascade);
+            }); 
 
-            modelBuilder.Entity<Repairer>(); //NOT DONE
+            //sample data
 
+            #region Phones
 
+            Phone phone1 = new Phone() { Id = 1, Brand = Brand.Apple, Model = "iPhone 11" };
+            Phone phone2 = new Phone() { Id = 2, Brand = Brand.Samsung, Model = "Galaxy S11" };
+            Phone phone3 = new Phone() { Id = 3, Brand = Brand.OnePlus, Model = "5T" };
+            Phone phone4 = new Phone() { Id = 4, Brand = Brand.Huawei, Model = "P11" };
+
+            #endregion
+
+            #region Customers
+
+            Customer customer1 = new Customer() { Id = 1, FirstName = "Eliot", LastName = "Alderson", Email = "eliot.alderson@gmail.com", PhoneId = 1 };
+            Customer customer2 = new Customer() { Id = 2, FirstName = "Lewis", LastName = "Hamilton", Email = "lewis.hamilton@gmail.com", PhoneId = 2 };
+            Customer customer3 = new Customer() { Id = 3, FirstName = "Clive", LastName = "Shelby", Email = "clive.shelby@gmail.com", PhoneId = 3 };
+
+            #endregion
+
+            #region Repairers
+
+            Repairer repairer1 = new Repairer() { Id = 1, FirstName = "George", LastName = "Lucas" };
+            Repairer repairer2 = new Repairer() { Id = 1, FirstName = "John", LastName = "Glass" };
+            Repairer repairer3 = new Repairer() { Id = 1, FirstName = "Joey", LastName = "Tribbiani" };
+
+            #endregion
         }
     }
 }
