@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HX0KAT_HFT_2021222.Models
 {
-    public class Customer
+    public class Customer : Entity
     {
 
     }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace HX0KAT_HFT_2021222.Models
 {
-    public class Repairer : Entity 
+    public interface IEntity <TId>
     {
-
+        TId Id { get; set; }
     }
 }
