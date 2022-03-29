@@ -78,6 +78,11 @@ namespace HX0KAT_HFT_2021222.DataAccess.Data
             Repairer repairer3 = new Repairer() { Id = 1, FirstName = "Joey", LastName = "Tribbiani" };
 
             #endregion
+
+
+            modelBuilder.Entity<Phone>().HasData(phone1, phone2, phone3, phone4);
+            modelBuilder.Entity<Customer>().HasData(customer1, customer2, customer3);
+            modelBuilder.Entity<Repairer>().HasData(repairer1, repairer2, repairer3);
         }
     }
 }
