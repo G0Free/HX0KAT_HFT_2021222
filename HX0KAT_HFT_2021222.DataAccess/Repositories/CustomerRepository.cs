@@ -15,6 +15,20 @@ namespace HX0KAT_HFT_2021222.DataAccess.Repositories
         {            
         }
 
+        public void UpdateFirstName(int id, string newFirstName)
+        {
+            Customer old = Read(id);
+            old.FirstName = newFirstName;
+            ctx.SaveChanges();
+        }
+
+        public void UpdatelastName(int id, string newLastName)
+        {
+            Customer old = Read(id);
+            old.LastName = newLastName;
+            ctx.SaveChanges();
+        }
+
         public void UpdateEmail(int id, string newEmail)
         {
             Customer old = Read(id);
