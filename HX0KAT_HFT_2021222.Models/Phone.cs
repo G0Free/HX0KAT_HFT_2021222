@@ -13,7 +13,7 @@ namespace HX0KAT_HFT_2021222.Models
         public Brand Brand { get; set; } //this should be an Enum/Internal class
         public string Model { get; set; } //this should be an Enum/Internal class
 
-
+        public int Price { get; set; }
 
         [ForeignKey(nameof(Customer))]
         public int CustomerId { get; set; }
