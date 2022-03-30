@@ -80,6 +80,20 @@ namespace HX0KAT_HFT_2021222.DataAccess.Data
             #endregion
 
 
+            #region ForeignKeysSet
+            customer1.PhoneId = phone1.Id;
+            customer2.PhoneId = phone2.Id;
+            customer3.PhoneId = phone3.Id;
+
+            phone1.CustomerId = customer1.Id;
+            phone2.CustomerId = customer2.Id;
+            phone3.CustomerId = customer3.Id;
+
+            phone1.RepairerId = repairer1.Id;
+            phone2.RepairerId = repairer1.Id;
+            phone3.RepairerId = repairer2.Id;
+            #endregion
+
             modelBuilder.Entity<Phone>().HasData(phone1, phone2, phone3, phone4);
             modelBuilder.Entity<Customer>().HasData(customer1, customer2, customer3);
             modelBuilder.Entity<Repairer>().HasData(repairer1, repairer2, repairer3);
