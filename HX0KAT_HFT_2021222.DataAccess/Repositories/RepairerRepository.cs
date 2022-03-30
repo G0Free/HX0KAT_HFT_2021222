@@ -14,5 +14,19 @@ namespace HX0KAT_HFT_2021222.DataAccess.Repositories
         public RepairerRepository(PhoneShopDbContext ctx) : base(ctx)
         {
         }
+
+        public void UpdateFirstName(int id, string newFirstName)
+        {
+            Repairer old = Read(id);
+            old.FirstName = newFirstName;   
+            ctx.SaveChanges();
+        }
+
+        public void UpdateLastName(int id, string newLastName)
+        {
+            Repairer old = Read(id);
+            old.LastName = newLastName;
+            ctx.SaveChanges();
+        }
     }
 }
