@@ -9,5 +9,8 @@ namespace HX0KAT_HFT_2021222.DataAccess.Interfaces
 {
     public interface IPhoneRepository : IRepository<Phone>
     {
+        void UpdateBrand(int id, Brand newBrand);
+        void UpdateModel(int id, string newModel);
+
     }
 }

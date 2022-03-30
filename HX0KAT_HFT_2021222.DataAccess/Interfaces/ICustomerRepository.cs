@@ -9,6 +9,9 @@ namespace HX0KAT_HFT_2021222.DataAccess.Interfaces
 {
     public interface ICustomerRepository : IRepository<Customer>
     {
-        //IQueryable<Customer> GetAll();
+        void UpdateFirstName(int id, string newFirstName);
+        void UpdateLastName(int id, string newLastName);
+        void UpdateEmail(int id, string newEmail);
+
     }
 }

@@ -9,5 +9,8 @@ namespace HX0KAT_HFT_2021222.DataAccess.Interfaces
 {
     public interface IRepairerRepository : IRepository<Repairer>
     {
+        void UpdateFirstName(int id, string newFirstName);
+        void UpdateLastName(int id, string newLastName);
+
     }
 }
