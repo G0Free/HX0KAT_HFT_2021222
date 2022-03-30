@@ -22,7 +22,7 @@ namespace HX0KAT_HFT_2021222.DataAccess.Repositories
             ctx.SaveChanges();
         }
 
-        public void UpdatelastName(int id, string newLastName)
+        public void UpdateLastName(int id, string newLastName)
         {
             Customer old = Read(id);
             old.LastName = newLastName;
