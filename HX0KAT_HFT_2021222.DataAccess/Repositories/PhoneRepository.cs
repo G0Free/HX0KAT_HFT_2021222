@@ -28,5 +28,11 @@ namespace HX0KAT_HFT_2021222.DataAccess.Repositories
             ctx.SaveChanges();
         }
 
+        public void UpdatePrice(int id, int newPrice)
+        {
+            Phone old = Read(id);
+            old.Price = newPrice;
+            ctx.SaveChanges();
+        }
     }
 }
