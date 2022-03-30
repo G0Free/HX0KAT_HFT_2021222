@@ -11,6 +11,7 @@ namespace HX0KAT_HFT_2021222.DataAccess.Interfaces
     {
         void UpdateBrand(int id, Brand newBrand);
         void UpdateModel(int id, string newModel);
+        void UpdatePrice(int id, int newPrice);
 
     }
 }
