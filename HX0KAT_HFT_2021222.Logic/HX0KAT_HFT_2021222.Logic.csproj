@@ -5,12 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HX0KAT_HFT_2021222.DataAccess\HX0KAT_HFT_2021222.DataAccess.csproj" />
     <ProjectReference Include="..\HX0KAT_HFT_2021222.Models\HX0KAT_HFT_2021222.Models.csproj" />
     <ProjectReference Include="..\HX0KAT_HFT_2021222.Repository\HX0KAT_HFT_2021222.Repository.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
