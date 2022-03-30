@@ -31,7 +31,7 @@ namespace HX0KAT_HFT_2021222.Logic.Services
 
         public Customer Read(int id)
         {
-            return customerRepo.Read(id) ?? throw new ArgumentException("Customer with the specifeid ID does not exists");
+            return customerRepo.Read(id) ?? throw new ArgumentException("Customer with the specified ID does not exists");
         }
 
         public IEnumerable<Customer> ReadAll()
