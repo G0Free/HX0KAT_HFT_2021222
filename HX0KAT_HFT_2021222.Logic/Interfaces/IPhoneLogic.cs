@@ -13,7 +13,7 @@ namespace HX0KAT_HFT_2021222.Logic.Interfaces
         Phone Read(int id);
         IEnumerable<Phone> ReadAll();
         void Update(Phone phone);
-        void Delete(Phone phone);
+        void Delete(int id);
 
     }
 }

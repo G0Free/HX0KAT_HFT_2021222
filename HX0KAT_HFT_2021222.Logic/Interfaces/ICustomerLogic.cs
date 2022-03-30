@@ -13,6 +13,6 @@ namespace HX0KAT_HFT_2021222.Logic.Interfaces
         Customer Read(int id);
         IEnumerable<Customer> ReadAll();
         void Update(Customer customer);
-        void Delete(Customer customer);
+        void Delete(int id);
     }
 }

@@ -13,6 +13,6 @@ namespace HX0KAT_HFT_2021222.Logic.Interfaces
         Repairer Read(int id);
         IEnumerable<Repairer> ReadAll();
         void Update(Repairer repairer);
-        void Delete(Repairer repairer);
+        void Delete(int id);
     }
 }
