@@ -24,10 +24,10 @@ namespace HX0KAT_HFT_2021222.Models
 
 
 
-        [ForeignKey(nameof(Phone))]
-        public int PhoneId { get; set; }
+        //[ForeignKey(nameof(Phone))]
+        //public int PhoneId { get; set; }
         [NotMapped]
-        public virtual Phone Phone { get; set; }
+        public virtual ICollection<Phone> Phone { get; set; }
 
     }
 }
