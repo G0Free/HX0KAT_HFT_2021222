@@ -75,8 +75,8 @@ namespace HX0KAT_HFT_2021222.DataAccess.Data
             #region Repairers
 
             Repairer repairer1 = new Repairer() { Id = 1, FirstName = "George", LastName = "Lucas" };
-            Repairer repairer2 = new Repairer() { Id = 1, FirstName = "John", LastName = "Glass" };
-            Repairer repairer3 = new Repairer() { Id = 1, FirstName = "Joey", LastName = "Tribbiani" };
+            Repairer repairer2 = new Repairer() { Id = 2, FirstName = "John", LastName = "Glass" };
+            Repairer repairer3 = new Repairer() { Id = 3, FirstName = "Joey", LastName = "Tribbiani" };
 
             #endregion
 
