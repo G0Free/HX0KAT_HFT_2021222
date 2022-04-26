@@ -20,7 +20,7 @@ namespace HX0KAT_HFT_2021222.Endpoint.Controllers
 
         // GET: api/<CustomerController>
         [HttpGet]
-        public IEnumerable<Customer> Read()
+        public IEnumerable<Customer> ReadAll()
         {
             return cl.ReadAll();
         }
