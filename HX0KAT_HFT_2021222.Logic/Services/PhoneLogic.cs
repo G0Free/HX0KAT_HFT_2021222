@@ -49,6 +49,11 @@ namespace HX0KAT_HFT_2021222.Logic.Services
 
         #region NON-CRUD
 
+        public double AVGPrice()
+        {
+            return phoneRepo.ReadAll().Average(p => p.Price) ?? -1;
+        }
+
 
 
         #endregion
