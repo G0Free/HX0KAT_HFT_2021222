@@ -48,6 +48,35 @@ namespace HX0KAT_HFT_2021222.Test
             Assert.That(isAllCustomersCorrect);
         }
 
+        [TestCase("Alderson")]
+        public void GetAllCustomersWithSameLastName_ReturnsCorrectCustomers(string lastName)
+        {
+            IEnumerable<Customer> customerList = this.CustomerLogic.GetAllCustomersWithSameLastName(lastName);
+            bool isAllCustomersCorrect = true;
+            foreach (var item in customerList)
+            {
+                if (item.LastName != lastName)
+                {
+                    isAllCustomersCorrect = false;
+                }
+            }
+
+            Assert.That(isAllCustomersCorrect);
+        }
+
+        [TestCase(3)]
+        public void ReadAll_ReturnsExactNumberOfInstances(int expected)
+        {
+            Assert.That(this.CustomerLogic.ReadAll().Count, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void Read_ThrowsArgumentException()
+        {
+           Assert.Throws<ArgumentException>(() => CustomerLogic.Read(int.MaxValue));
+        }
+
+
         #endregion
 
         #region FAKE_OBJECTS
