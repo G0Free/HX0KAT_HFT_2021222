@@ -1,6 +1,8 @@
 using HX0KAT_HFT_2021222.DataAccess.Data;
 using HX0KAT_HFT_2021222.DataAccess.Interfaces;
 using HX0KAT_HFT_2021222.DataAccess.Repositories;
+using HX0KAT_HFT_2021222.Logic.Interfaces;
+using HX0KAT_HFT_2021222.Logic.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -34,7 +36,9 @@ namespace HX0KAT_HFT_2021222.Endpoint
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IRepairerRepository, RepairerRepository>();
 
-
+            services.AddTransient<IPhoneLogic, PhoneLogic>();
+            services.AddTransient<ICustomerLogic, CustomerLogic>();
+            services.AddTransient<IRepairerLogic, RepairerLogic>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
