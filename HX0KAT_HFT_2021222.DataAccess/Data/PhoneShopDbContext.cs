@@ -53,7 +53,7 @@ namespace HX0KAT_HFT_2021222.DataAccess.Data
             }); 
 
             //sample data
-
+            //TODO: Added these into an array
             #region Phones
 
             Phone phone1 = new Phone() { Id = 1, Brand = Brand.Apple, Model = "iPhone 11", Price = 100000 };
