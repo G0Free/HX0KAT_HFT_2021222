@@ -60,12 +60,7 @@ namespace HX0KAT_HFT_2021222.Logic.Services
                     where phone.Brand.ToString().Contains(brandName)
                     select phone;
             return q;
-        }
-
-        //public KeyValuePair<string, double> CustomerWithHighestPriceSummed()
-        //{
-
-        //}
+        }        
 
         #endregion
     }
