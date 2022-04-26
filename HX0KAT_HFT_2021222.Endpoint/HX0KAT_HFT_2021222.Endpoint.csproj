@@ -7,7 +7,6 @@
   <ItemGroup>
     <ProjectReference Include="..\HX0KAT_HFT_2021222.Logic\HX0KAT_HFT_2021222.Logic.csproj" />
     <ProjectReference Include="..\HX0KAT_HFT_2021222.Models\HX0KAT_HFT_2021222.Models.csproj" />
-    <ProjectReference Include="..\HX0KAT_HFT_2021222.Repository\HX0KAT_HFT_2021222.Repository.csproj" />
   </ItemGroup>
 
 </Project>
