@@ -14,5 +14,7 @@ namespace HX0KAT_HFT_2021222.Logic.Interfaces
         IEnumerable<Repairer> ReadAll();
         void Update(Repairer repairer);
         void Delete(int id);
+        public IEnumerable<Repairer> GetAllRepairerWithSameFirstName(string firstName);
+        public IEnumerable<Repairer> GetAllRepairerWithSameLastName(string lastName);
     }
 }

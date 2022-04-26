@@ -14,5 +14,7 @@ namespace HX0KAT_HFT_2021222.Logic.Interfaces
         IEnumerable<Customer> ReadAll();
         void Update(Customer customer);
         void Delete(int id);
+        public IEnumerable<Customer> GetAllCustomersWithSameFirstName(string firstName);
+        public IEnumerable<Customer> GetAllCustomersWithSameLastName(string lastName);
     }
 }

@@ -47,7 +47,22 @@ namespace HX0KAT_HFT_2021222.Logic.Services
 
         #region NON-CRUD
 
+        public IEnumerable<Customer> GetAllCustomersWithSameFirstName(string firstName)
+        {
+            var q = from customer in customerRepo.ReadAll()
+                    where customer.FirstName.Contains(firstName)
+                    select customer;
+            return q;
+        }
 
+        public IEnumerable<Customer> GetAllCustomersWithSameLastName(string lastName)
+        {
+            var q = from x in customerRepo.ReadAll()
+                    where x.LastName.Contains(lastName)
+                    select x;
+
+            return q;
+        }
 
         #endregion
     }

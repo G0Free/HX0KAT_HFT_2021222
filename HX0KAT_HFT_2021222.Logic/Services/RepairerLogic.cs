@@ -46,5 +46,27 @@ namespace HX0KAT_HFT_2021222.Logic.Services
         }
 
         #endregion
+
+        #region NON-CRUD
+
+        public IEnumerable<Repairer> GetAllRepairerWithSameFirstName(string firstName)
+        {
+            var q = from x in repairerRepo.ReadAll()
+                    where x.FirstName.Contains(firstName)
+                    select x;
+
+            return q;
+        }
+
+        public IEnumerable<Repairer> GetAllRepairerWithSameLastName(string lastName)
+        {
+            var q = from x in repairerRepo.ReadAll()
+                    where x.LastName.Contains(lastName)
+                    select x;
+
+            return q;
+        }
+
+        #endregion
     }
 }

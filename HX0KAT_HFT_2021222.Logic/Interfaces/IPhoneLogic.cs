@@ -14,6 +14,7 @@ namespace HX0KAT_HFT_2021222.Logic.Interfaces
         IEnumerable<Phone> ReadAll();
         void Update(Phone phone);
         void Delete(int id);
-
+        public double AVGPrice();
+        public IEnumerable<Phone> GetAllPhonesWithASpecificBrand(string brandName);
     }
 }

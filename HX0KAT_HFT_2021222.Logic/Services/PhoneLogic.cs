@@ -54,7 +54,18 @@ namespace HX0KAT_HFT_2021222.Logic.Services
             return phoneRepo.ReadAll().Average(p => p.Price) ?? -1;
         }
 
+        public IEnumerable<Phone> GetAllPhonesWithASpecificBrand(string brandName)
+        {
+            var q = from phone in phoneRepo.ReadAll()
+                    where phone.Brand.ToString().Contains(brandName)
+                    select phone;
+            return q;
+        }
 
+        //public KeyValuePair<string, double> CustomerWithHighestPriceSummed()
+        //{
+
+        //}
 
         #endregion
     }
