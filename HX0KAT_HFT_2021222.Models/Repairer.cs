@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace HX0KAT_HFT_2021222.Models
@@ -17,6 +18,7 @@ namespace HX0KAT_HFT_2021222.Models
         public string LastName { get; set; }
 
         [NotMapped]
+        [JsonIgnore]
         public virtual ICollection<Phone> Phones { get; set; }
 
         public Repairer()

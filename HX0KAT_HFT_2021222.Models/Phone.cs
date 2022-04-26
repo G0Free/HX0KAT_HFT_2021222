@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace HX0KAT_HFT_2021222.Models
 {
@@ -17,14 +18,17 @@ namespace HX0KAT_HFT_2021222.Models
 
         [ForeignKey(nameof(Customer))]
         public int CustomerId { get; set; }
+
         [NotMapped]
-        public Customer Customer { get; set; }
+        [JsonIgnore]
+        public virtual Customer Customer { get; set; }
 
 
         [ForeignKey(nameof(Repairer))]
         public int RepairerId { get; set; }
         [NotMapped]
-        public Repairer Repairer { get; set; }
+        [JsonIgnore]
+        public virtual Repairer Repairer { get; set; }
 
     }
 }
