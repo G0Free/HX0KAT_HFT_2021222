@@ -13,10 +13,21 @@ namespace HX0KAT_HFT_2021222.Logic.Services
     {
         ICustomerRepository customerRepo;
 
+        IPhoneRepository phoneRepo;
+        IRepairerRepository repairerRepo;
+
         public CustomerLogic(ICustomerRepository customerRepository)
         {
             this.customerRepo = customerRepository;
         }
+
+        public CustomerLogic(ICustomerRepository customerRepo, IPhoneRepository phoneRepo, IRepairerRepository repairerRepo) : this(customerRepo)
+        {
+            this.phoneRepo = phoneRepo;
+            this.repairerRepo = repairerRepo;
+        }
+
+
 
         #region CRUD
         public void Create(Customer customer)
