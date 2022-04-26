@@ -14,12 +14,14 @@ namespace HX0KAT_HFT_2021222.Endpoint.Controllers
         IPhoneLogic pl;
         ICustomerLogic cl;
         IRepairerLogic rl;
+        IStatLogic stat;
 
-        public StatController(IPhoneLogic pl, ICustomerLogic cl, IRepairerLogic rl)
+        public StatController(IPhoneLogic pl, ICustomerLogic cl, IRepairerLogic rl, IStatLogic stat)
         {
             this.pl = pl;
             this.cl = cl;
             this.rl = rl;
+            this.stat = stat;
         }
         #region phone
         [HttpGet]
@@ -61,6 +63,13 @@ namespace HX0KAT_HFT_2021222.Endpoint.Controllers
         }
         #endregion
 
+        #region stat
+        [HttpGet]
+        public KeyValuePair<Customer, double> CustomerWithHighestPriceSummed()
+        {
+            return stat.CustomerWithHighestPriceSummed();
+        }
+        #endregion
 
     }
 }

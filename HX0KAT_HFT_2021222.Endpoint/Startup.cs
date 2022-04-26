@@ -40,6 +40,8 @@ namespace HX0KAT_HFT_2021222.Endpoint
             services.AddTransient<ICustomerLogic, CustomerLogic>();
             services.AddTransient<IRepairerLogic, RepairerLogic>();
 
+            services.AddTransient<IStatLogic, StatLogic>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
