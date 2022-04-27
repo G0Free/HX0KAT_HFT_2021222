@@ -69,6 +69,12 @@ namespace HX0KAT_HFT_2021222.Endpoint.Controllers
         {
             return stat.CustomerWithHighestPriceSummed();
         }
+
+        [HttpGet]
+        public IEnumerable<Phone> AllPhonesByTheGivenRepairer(int givenRepairerId)
+        {
+            return stat.AllPhonesByTheGivenRepairer(givenRepairerId);
+        }
         #endregion
 
     }

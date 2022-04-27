@@ -64,7 +64,7 @@ namespace HX0KAT_HFT_2021222.Logic.Services
                     (g.Key, g.Sum(c => c.Price) ?? 0);
 
             q.OrderBy(x => x.Value);
-
+            
             List<KeyValuePair<Customer, double>> result = new List<KeyValuePair<Customer, double>>();
             foreach (var item in q)
             {
@@ -73,6 +73,15 @@ namespace HX0KAT_HFT_2021222.Logic.Services
             }
 
             return result.FirstOrDefault();
+        }
+
+        public IEnumerable<Phone> AllPhonesByTheGivenRepairer(int givenRepairerId)
+        {
+            var q = from phone in phoneRepo.ReadAll()
+                    where phone.RepairerId == givenRepairerId
+                    select phone;
+
+            return q;
         }
     }
 }
