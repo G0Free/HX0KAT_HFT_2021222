@@ -60,6 +60,12 @@ namespace HX0KAT_HFT_2021222.Test
             Assert.That(result, Is.EqualTo(expected));
         }
 
+        [TestCase(1,2)]
+        public void AllPhonesByTheGivenRepairer_ReturnsCorrectNUmberOfItems(int givenRepairerId, int expected)
+        {
+            Assert.That(StatLogic.AllPhonesByTheGivenRepairer(1).Count, Is.EqualTo(expected));
+        }
+
         #endregion
 
 
