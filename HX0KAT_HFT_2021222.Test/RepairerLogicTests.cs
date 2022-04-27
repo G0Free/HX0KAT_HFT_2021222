@@ -33,7 +33,37 @@ namespace HX0KAT_HFT_2021222.Test
 
         #region TESTS
 
+        [TestCase("Joey")]
+        public void GetAllRepairerWithSameFirstName_ReturnsCorrectCustomers(string firstName)
+        {
+            IEnumerable<Repairer> repairerList = this.RepairerLogic.GetAllRepairerWithSameFirstName(firstName);
+            bool isAllRepairerCorrect = true;
+            foreach (var item in repairerList)
+            {
+                if (item.FirstName != firstName)
+                {
+                    isAllRepairerCorrect = false;
+                }
+            }
 
+            Assert.That(isAllRepairerCorrect);
+        }
+
+        [TestCase("Tribbiani")]
+        public void GetAllRepairerWithSameLastName_ReturnsCorrectCustomers(string lastName)
+        {
+            IEnumerable<Repairer> repairerList = this.RepairerLogic.GetAllRepairerWithSameLastName(lastName);
+            bool isAllRepairerCorrect = true;
+            foreach (var item in repairerList)
+            {
+                if (item.LastName != lastName)
+                {
+                    isAllRepairerCorrect = false;
+                }
+            }
+
+            Assert.That(isAllRepairerCorrect);
+        }
 
         #endregion
 
