@@ -32,7 +32,30 @@ namespace HX0KAT_HFT_2021222.Test
 
         #region TESTS
 
+        [TestCase(87400)]
+        public void AVGPrice_ReturnsCorrectNumber(int expected)
+        {
+            Assert.That(this.PhoneLogic.AVGPrice(), Is.EqualTo(expected));
+        }
 
+        [TestCase("Apple",2)]
+        public void GetAllPhonesWithASpecificBrand_ReturnsCorrectNumberOfItems(string brandname, int expectedNumber)
+        {
+            Assert.That(this.PhoneLogic.GetAllPhonesWithASpecificBrand(brandname).Count, Is.EqualTo(expectedNumber));
+        }
+
+
+        [TestCase(5)]
+        public void ReadAll_ReturnsExactNumberOfInstances(int expected)
+        {
+            Assert.That(this.PhoneLogic.ReadAll().Count, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void Read_ThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(() => PhoneLogic.Read(int.MaxValue));
+        }
 
         #endregion
 
