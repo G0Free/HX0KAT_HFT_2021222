@@ -33,12 +33,17 @@ namespace HX0KAT_HFT_2021222.Client
                 .Add(">> DELETE A PHONE", () => DeletePhone(rserv))
                 .Add(">> DELETE A CUSTOMER", () => DeleteCustomer(rserv))
                 .Add(">> DELETE A REPAIRER", () => DeleteRepairer(rserv))
+                
+                
+                .Add(">> AVERAGE PRICE", () => PhoneAVGPrice(rserv))
 
                 .Add(">> EXIT", ConsoleMenu.Close);
 
 
             menu.Show();
         }
+
+        #region CRUD
 
         #region ReadAll
         private static void ListAllPhones(RestService rserv)
@@ -343,5 +348,35 @@ namespace HX0KAT_HFT_2021222.Client
         }
         #endregion
 
+        #endregion
+
+        #region NON_CRUD
+
+        #region phone
+        private static void PhoneAVGPrice(RestService rserv)
+        {
+            Console.Clear();
+            var list = rserv.Get<double>("api/Stat/PhoneAVGPrice"); foreach (var item in list)
+            {
+                Console.WriteLine($"Avegrage price is: {item}");
+            }
+            //double result = rserv.Get<double>("api/Stat/PhoneAVGPrice");
+            //Console.WriteLine($"Avegrage price is: {result}");
+
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+        }
+        #endregion
+
+        #region customer
+
+        #endregion
+
+        #region repairer
+
+        #endregion
+
+        #endregion
     }
 }
