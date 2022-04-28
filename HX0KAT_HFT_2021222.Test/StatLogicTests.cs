@@ -30,41 +30,50 @@ namespace HX0KAT_HFT_2021222.Test
             this.StatLogic = new StatLogic(mockedCustomerRepo.Object, mockedPhoneRepo.Object, mockedRepairerRepo.Object);
         }
 
-        #region TESTS
-
-        //        {
-        //        "key": 
-        //            {
-        //                 "id": 1,
-        //                "firstName": "Eliot",
-        //                "lastName": "Alderson",
-        //                "email": "eliot.alderson@gmail.com"
-        //            },
-        //         "value": 180000
-        //}
+        #region TESTS       
 
         [Test]
         public void CustomerWithHighestPriceSummed_returnsCorrectValue()
         {
-            KeyValuePair<Customer, double> expected = new KeyValuePair<Customer, double>(
-           new Customer()
-           {
-               Id = 1,
-               FirstName = "Eliot",
-               LastName = "Alderson",
-               Email = "eliot.alderson@gmail.com"
-           },180000d);
+            Customer expectedCustomer = new Customer()
+            {
+                Id = 1,
+                FirstName = "Eliot",
+                LastName = "Alderson",
+                Email = "eliot.alderson@gmail.com"
+            };
+            KeyValuePair<Customer, double> expected = new KeyValuePair<Customer, double>(expectedCustomer, 180000d);
 
             KeyValuePair<Customer, double> result = StatLogic.CustomerWithHighestPriceSummed();
-            
-            Assert.That(result, Is.EqualTo(expected));
+
+            Assert.That(result.Value, Is.EqualTo(expected.Value));
         }
 
-        [TestCase(1,2)]
+
+        [Test]
+        public void CustomerWithLowestPriceSummed_returnsCorrectValue()
+        {
+            Customer expectedCustomer = new Customer()
+            {
+                Id = 1,
+                FirstName = "Eliot",
+                LastName = "Shelby",
+                Email = "eliot.shelby@gmail.com"
+            };
+            KeyValuePair<Customer, double> expected = new KeyValuePair<Customer, double>(expectedCustomer, 92000d);
+
+            KeyValuePair<Customer, double> result = StatLogic.CustomerWithLowestPriceSummed();
+
+            Assert.That(result.Value, Is.EqualTo(expected.Value));
+        }
+
+        [TestCase(1, 2)]
         public void AllPhonesByTheGivenRepairer_ReturnsCorrectNUmberOfItems(int givenRepairerId, int expected)
         {
             Assert.That(StatLogic.AllPhonesByTheGivenRepairer(1).Count, Is.EqualTo(expected));
         }
+
+
 
         #endregion
 
