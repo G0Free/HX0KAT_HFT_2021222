@@ -68,9 +68,15 @@ namespace HX0KAT_HFT_2021222.Test
         }
 
         [TestCase(1, 2)]
-        public void AllPhonesByTheGivenRepairer_ReturnsCorrectNUmberOfItems(int givenRepairerId, int expected)
+        public void AllPhonesByTheGivenRepairer_ReturnsCorrectNumberOfItems(int givenRepairerId, int expected)
         {
-            Assert.That(StatLogic.AllPhonesByTheGivenRepairer(1).Count, Is.EqualTo(expected));
+            Assert.That(StatLogic.AllPhonesByTheGivenRepairer(givenRepairerId).Count, Is.EqualTo(expected));
+        }
+
+        [TestCase(1, 2)]
+        public void AllCustomerByTheGivenRepairer_ReturnsCorrectNumberOfItems(int givenRepairerId, int expected)
+        {
+            Assert.That(StatLogic.AllCustomerByTheGivenRepairer(givenRepairerId).Count, Is.EqualTo(expected));
         }
 
 
