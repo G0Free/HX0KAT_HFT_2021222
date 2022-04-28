@@ -33,6 +33,15 @@ namespace HX0KAT_HFT_2021222.Test
 
         #region TESTS
 
+        [TestCase]
+        public void Create_ThrowsArgumentException()
+        {
+            Repairer repairer = new Repairer();
+            repairer.LastName = "";
+
+            Assert.Throws<ArgumentException>(() => RepairerLogic.Create(repairer));
+        }
+
         [TestCase("Joey")]
         public void GetAllRepairerWithSameFirstName_ReturnsCorrectCustomers(string firstName)
         {

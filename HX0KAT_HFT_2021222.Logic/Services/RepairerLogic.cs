@@ -33,7 +33,10 @@ namespace HX0KAT_HFT_2021222.Logic.Services
 
         public void Create(Repairer repairer)
         {
-            repairerRepo.Create(repairer);
+            if (repairer.LastName == "")
+                throw new ArgumentException("LastName can not be empty!");
+            else
+                repairerRepo.Create(repairer);
         }
 
         public void Delete(int id)

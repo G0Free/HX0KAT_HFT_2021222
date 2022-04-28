@@ -15,6 +15,8 @@ namespace HX0KAT_HFT_2021222.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override int Id { get; set; }
         public string FirstName { get; set; }
+
+        [Required]
         public string LastName { get; set; }
 
         [NotMapped]
