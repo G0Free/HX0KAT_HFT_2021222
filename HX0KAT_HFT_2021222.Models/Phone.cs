@@ -11,7 +11,9 @@ namespace HX0KAT_HFT_2021222.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override int Id { get; set; }
 
+        [Required]
         public string Brand { get; set; }
+        [Required]
         public string Model { get; set; }
 
         public int? Price { get; set; }

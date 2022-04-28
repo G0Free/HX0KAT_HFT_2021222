@@ -32,6 +32,17 @@ namespace HX0KAT_HFT_2021222.Test
 
         #region TESTS
 
+        [TestCase]
+        public void Create_ThrowsArgumentException()
+        {
+            Phone phone = new Phone();
+            phone.Brand = "";
+            phone.Model = "";
+
+            Assert.Throws<ArgumentException>(() => PhoneLogic.Create(phone));
+        }
+
+
         [TestCase(87400d)]
         public void AVGPrice_ReturnsCorrectNumber(double expected)
         {

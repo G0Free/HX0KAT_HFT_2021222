@@ -33,7 +33,10 @@ namespace HX0KAT_HFT_2021222.Logic.Services
 
         public void Create(Phone phone)
         {
-            phoneRepo.Create(phone);
+            if (phone.Brand == "" || phone.Model == "")
+                throw new ArgumentException("Brand or Model can not be empty!");
+            else
+                phoneRepo.Create(phone);
         }
 
         public void Delete(int id)
@@ -73,7 +76,7 @@ namespace HX0KAT_HFT_2021222.Logic.Services
                     where phone.Brand.ToString().Contains(brandName)
                     select phone;
             return q;
-        }        
+        }
 
         #endregion
     }
