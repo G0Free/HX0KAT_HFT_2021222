@@ -32,7 +32,9 @@ namespace HX0KAT_HFT_2021222.Logic.Services
         #region CRUD
         public void Create(Customer customer)
         {
-            customerRepo.Create(customer);
+            if(customer.Email == "")
+                throw new ArgumentException("Email can not be empty!");
+            
         }
 
         public void Delete(int id)

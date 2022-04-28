@@ -32,6 +32,16 @@ namespace HX0KAT_HFT_2021222.Test
 
         #region TESTS
 
+        [TestCase]
+        public void Create_ThrowsArgumentException()
+        {
+            Customer customer = new Customer();
+            customer.Email = "";
+
+            Assert.Throws<ArgumentException>(() => CustomerLogic.Create(customer));
+        }
+
+
         [TestCase("Eliot")]
         public void GetAllCustomersWithSameFirstName_ReturnsCorrectCustomers(string firstName)
         {
