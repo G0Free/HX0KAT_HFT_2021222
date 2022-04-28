@@ -44,7 +44,6 @@ namespace HX0KAT_HFT_2021222.Logic.Services
             return result.FirstOrDefault();            
         }
 
-
         /// <summary>
         /// Which Customer payed the least summerized, and the summerized cost
         /// </summary>
@@ -81,6 +80,10 @@ namespace HX0KAT_HFT_2021222.Logic.Services
             var q = from phone in phoneRepo.ReadAll()
                     where phone.RepairerId == givenRepairerId
                     select phone;
+            //var result = from customer in customerRepo.ReadAll()
+            //             where q.FirstOrDefault(y => y.CustomerId == customer.Id)
+            //             select customer;
+
             var result = from phone in q
                          select phone.Customer;
 
