@@ -25,7 +25,7 @@ namespace HX0KAT_HFT_2021222.Endpoint.Controllers
         }
         #region phone
         [HttpGet]
-        public double PhoneAVGPrice()
+        public IEnumerable<double> PhoneAVGPrice()
         {            
             return pl.AVGPrice();
         }

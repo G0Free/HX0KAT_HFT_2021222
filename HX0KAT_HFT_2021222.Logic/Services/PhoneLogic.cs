@@ -60,9 +60,11 @@ namespace HX0KAT_HFT_2021222.Logic.Services
 
         #region NON-CRUD
 
-        public double AVGPrice()
+        public IEnumerable<double> AVGPrice()
         {
-            return phoneRepo.ReadAll().Average(p => p.Price) ?? -1;
+            var q = new List<double>();
+            q.Add(phoneRepo.ReadAll().Average(p => p.Price) ?? -1);
+            return q;
         }
 
         public IEnumerable<Phone> GetAllPhonesWithASpecificBrand(string brandName)
