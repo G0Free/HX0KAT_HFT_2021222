@@ -137,11 +137,12 @@ namespace HX0KAT_HFT_2021222.Client
 
             Phone phone = new Phone();
             Console.WriteLine("Choose Brand:");
-            foreach (var item in Enum.GetValues(typeof(Brand)))
-            {
-                Console.WriteLine(item);
-            }
-            phone.Brand = Enum.Parse<Brand>(Console.ReadLine());
+            phone.Brand = Console.ReadLine();
+            //foreach (var item in Enum.GetValues(typeof(Brand)))
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //phone.Brand = Enum.Parse<Brand>(Console.ReadLine());
 
             Console.WriteLine("Model:");
             phone.Model = Console.ReadLine();

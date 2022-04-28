@@ -72,11 +72,11 @@ namespace HX0KAT_HFT_2021222.Test
         {
             //sample data            
             #region Phones            
-            Phone phone1 = new Phone() { Id = 1, Brand = Brand.Apple, Model = "iPhone 11", Price = 100000 };
-            Phone phone2 = new Phone() { Id = 2, Brand = Brand.Samsung, Model = "Galaxy S11", Price = 85000 };
-            Phone phone3 = new Phone() { Id = 3, Brand = Brand.OnePlus, Model = "5T", Price = 92000 };
-            Phone phone4 = new Phone() { Id = 4, Brand = Brand.Huawei, Model = "P11", Price = 80000 };
-            Phone phone5 = new Phone() { Id = 5, Brand = Brand.Apple, Model = "iPhone 10", Price = 80000 };
+            Phone phone1 = new Phone() { Id = 1, Brand = "Apple", Model = "iPhone 11", Price = 100000 };
+            Phone phone2 = new Phone() { Id = 2, Brand = "Samsung", Model = "Galaxy S11", Price = 85000 };
+            Phone phone3 = new Phone() { Id = 3, Brand = "OnePlus", Model = "5T", Price = 92000 };
+            Phone phone4 = new Phone() { Id = 4, Brand = "Huawei", Model = "P11", Price = 80000 };
+            Phone phone5 = new Phone() { Id = 5, Brand = "Apple", Model = "iPhone 10", Price = 80000 };
             #endregion
 
             #region Customers
@@ -125,11 +125,11 @@ namespace HX0KAT_HFT_2021222.Test
         {
             //sample data            
             #region Phones            
-            Phone phone1 = new Phone() { Id = 1, Brand = Brand.Apple, Model = "iPhone 11", Price = 100000 };
-            Phone phone2 = new Phone() { Id = 2, Brand = Brand.Samsung, Model = "Galaxy S11", Price = 85000 };
-            Phone phone3 = new Phone() { Id = 3, Brand = Brand.OnePlus, Model = "5T", Price = 92000 };
-            Phone phone4 = new Phone() { Id = 4, Brand = Brand.Huawei, Model = "P11", Price = 80000 };
-            Phone phone5 = new Phone() { Id = 5, Brand = Brand.Apple, Model = "iPhone 10", Price = 80000 };
+            Phone phone1 = new Phone() { Id = 1, Brand = "Apple", Model = "iPhone 11", Price = 100000 };
+            Phone phone2 = new Phone() { Id = 2, Brand = "Samsung", Model = "Galaxy S11", Price = 85000 };
+            Phone phone3 = new Phone() { Id = 3, Brand = "OnePlus", Model = "5T", Price = 92000 };
+            Phone phone4 = new Phone() { Id = 4, Brand = "Huawei", Model = "P11", Price = 80000 };
+            Phone phone5 = new Phone() { Id = 5, Brand = "Apple", Model = "iPhone 10", Price = 80000 };
             #endregion
 
             #region Customers
@@ -176,11 +176,11 @@ namespace HX0KAT_HFT_2021222.Test
         {
             //sample data            
             #region Phones            
-            Phone phone1 = new Phone() { Id = 1, Brand = Brand.Apple, Model = "iPhone 11", Price = 100000 };
-            Phone phone2 = new Phone() { Id = 2, Brand = Brand.Samsung, Model = "Galaxy S11", Price = 85000 };
-            Phone phone3 = new Phone() { Id = 3, Brand = Brand.OnePlus, Model = "5T", Price = 92000 };
-            Phone phone4 = new Phone() { Id = 4, Brand = Brand.Huawei, Model = "P11", Price = 80000 };
-            Phone phone5 = new Phone() { Id = 5, Brand = Brand.Apple, Model = "iPhone 10", Price = 80000 };
+            Phone phone1 = new Phone() { Id = 1, Brand = "Apple", Model = "iPhone 11", Price = 100000 };
+            Phone phone2 = new Phone() { Id = 2, Brand = "Samsung", Model = "Galaxy S11", Price = 85000 };
+            Phone phone3 = new Phone() { Id = 3, Brand = "OnePlus", Model = "5T", Price = 92000 };
+            Phone phone4 = new Phone() { Id = 4, Brand = "Huawei", Model = "P11", Price = 80000 };
+            Phone phone5 = new Phone() { Id = 5, Brand = "Apple", Model = "iPhone 10", Price = 80000 };
             #endregion
 
             #region Customers

@@ -15,7 +15,7 @@ namespace HX0KAT_HFT_2021222.DataAccess.Repositories
         {
         }
 
-        public void UpdateBrand(int id, Brand newBrand)
+        public void UpdateBrand(int id, string newBrand)
         {
             Phone old = Read(id);
             old.Brand = newBrand;
