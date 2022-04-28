@@ -23,6 +23,16 @@ namespace HX0KAT_HFT_2021222.Client
                 .Add(">> REPAIRER BY ID", () => RepairerById(rserv))
 
                 .Add(">> CREATE A PHONE", () => CreatePhone(rserv))
+                .Add(">> CREATE A CUSTOMER", () => CreateCustomer(rserv))
+                .Add(">> CREATE A REPAIRER", () => CreateRepairer(rserv))
+
+                .Add(">> UPDATE A PHONE", () => UpdatePhone(rserv))
+                .Add(">> UPDATE A CUSTOMER", () => UpdateCustomer(rserv))
+                .Add(">> UPDATE A REPAIRER", () => UpdateRepairer(rserv))
+
+                .Add(">> DELETE A PHONE", () => DeletePhone(rserv))
+                .Add(">> DELETE A CUSTOMER", () => DeleteCustomer(rserv))
+                .Add(">> DELETE A REPAIRER", () => DeleteRepairer(rserv))
 
                 .Add(">> EXIT", ConsoleMenu.Close);
 
@@ -136,13 +146,9 @@ namespace HX0KAT_HFT_2021222.Client
             Console.Clear();
 
             Phone phone = new Phone();
-            Console.WriteLine("Choose Brand:");
-            phone.Brand = Console.ReadLine();
-            //foreach (var item in Enum.GetValues(typeof(Brand)))
-            //{
-            //    Console.WriteLine(item);
-            //}
-            //phone.Brand = Enum.Parse<Brand>(Console.ReadLine());
+
+            Console.WriteLine("Brand:");
+            phone.Brand = Console.ReadLine();            
 
             Console.WriteLine("Model:");
             phone.Model = Console.ReadLine();
@@ -157,6 +163,180 @@ namespace HX0KAT_HFT_2021222.Client
             phone.RepairerId = int.Parse(Console.ReadLine());
 
             rserv.Post<Phone>(phone, "api/phone");
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+        }
+
+        private static void CreateCustomer(RestService rserv)
+        {
+            Console.Clear();
+
+            Customer customer = new Customer();
+
+            Console.WriteLine("Firstname:");
+            customer.FirstName = Console.ReadLine();
+
+            Console.WriteLine("Lastname:");
+            customer.LastName = Console.ReadLine();
+
+            Console.WriteLine("Email:");
+            customer.Email = Console.ReadLine();
+
+            rserv.Post<Customer>(customer, "api/customer");
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+        }
+
+        private static void CreateRepairer(RestService rserv)
+        {
+            Console.Clear();
+
+            Repairer repairer = new Repairer();
+
+            Console.WriteLine("Firstname:");
+            repairer.FirstName = Console.ReadLine();
+
+            Console.WriteLine("Lastname:");
+            repairer.LastName = Console.ReadLine();
+
+            rserv.Post<Repairer>(repairer, "api/repairer");
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+        }
+        #endregion
+
+        #region Update
+
+        private static void UpdatePhone(RestService rserv)
+        {
+            Console.Clear();
+
+            Console.WriteLine("ID:");
+            int choosenId = int.Parse(Console.ReadLine());
+            Phone phone = rserv.Get<Phone>(choosenId, "api/phone");
+
+            Console.WriteLine("Brand:");
+            phone.Brand = Console.ReadLine();
+
+            Console.WriteLine("Model:");
+            phone.Model = Console.ReadLine();
+
+            Console.WriteLine("Price");
+            phone.Price = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("CustomerId:");
+            phone.CustomerId = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("RepairerId:");
+            phone.RepairerId = int.Parse(Console.ReadLine());
+
+            rserv.Put<Phone>(phone, "api/phone");
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+        }
+
+        private static void UpdateCustomer(RestService rserv)
+        {
+            Console.Clear();
+
+            Console.WriteLine("ID:");
+            int choosenId = int.Parse(Console.ReadLine());
+            Customer customer = rserv.Get<Customer>(choosenId, "api/customer");
+
+            Console.WriteLine("Firstname:");
+            customer.FirstName = Console.ReadLine();
+
+            Console.WriteLine("Lastname:");
+            customer.LastName = Console.ReadLine();
+
+            Console.WriteLine("Email:");
+            customer.Email = Console.ReadLine();
+
+            rserv.Put<Customer>(customer, "api/customer");
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+        }
+
+        private static void UpdateRepairer(RestService rserv)
+        {
+            Console.Clear();
+
+            Console.WriteLine("ID:");
+            int choosenId = int.Parse(Console.ReadLine());
+            Repairer repairer = rserv.Get<Repairer>(choosenId, "api/repairer");
+
+            Console.WriteLine("Firstname:");
+            repairer.FirstName = Console.ReadLine();
+
+            Console.WriteLine("Lastname:");
+            repairer.LastName = Console.ReadLine();
+
+            rserv.Put<Repairer>(repairer, "api/repairer");
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+        }
+
+        #endregion
+
+        #region Delete
+        private static void DeletePhone(RestService rserv)
+        {
+            Console.Clear();
+
+            ListAllPhones(rserv);
+
+            Console.WriteLine("ID:");
+            int choosenId = int.Parse(Console.ReadLine());
+
+            var choosenItem = rserv.Get<Phone>(choosenId, "api/phone");
+            Console.WriteLine(choosenItem.ToString() + " got deleted");
+
+            rserv.Delete(choosenId, "api/phone");
+
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+        }
+
+        private static void DeleteCustomer(RestService rserv)
+        {
+            Console.Clear();
+
+            ListAllCustomers(rserv);
+
+            Console.WriteLine("ID:");
+            int choosenId = int.Parse(Console.ReadLine());
+
+            var choosenItem = rserv.Get<Customer>(choosenId, "api/customer");
+            Console.WriteLine(choosenItem.ToString() + " got deleted");
+
+            rserv.Delete(choosenId, "api/customer");
+
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+        }
+
+        private static void DeleteRepairer(RestService rserv)
+        {
+            Console.Clear();
+
+            ListAllRepairer(rserv);
+
+            Console.WriteLine("ID:");
+            int choosenId = int.Parse(Console.ReadLine());
+
+            var choosenItem = rserv.Get<Repairer>(choosenId, "api/repairer");
+            Console.WriteLine(choosenItem.ToString() + " got deleted");
+
+            rserv.Delete(choosenId, "api/repairer");
+
             Console.WriteLine();
             Console.WriteLine("Press the enter key to continue!");
             Console.ReadLine();
