@@ -32,10 +32,12 @@ namespace HX0KAT_HFT_2021222.Test
 
         #region TESTS
 
-        [TestCase(87400)]
-        public void AVGPrice_ReturnsCorrectNumber(int expected)
+        [TestCase(87400d)]
+        public void AVGPrice_ReturnsCorrectNumber(double expected)
         {
-            Assert.That(this.PhoneLogic.AVGPrice(), Is.EqualTo(expected));
+            List<double> list = new List<double>();
+            list.Add(expected);
+            Assert.That(this.PhoneLogic.AVGPrice(), Is.EqualTo(list));
         }
 
         [TestCase("Apple",2)]

@@ -36,6 +36,7 @@ namespace HX0KAT_HFT_2021222.Client
                 
                 
                 .Add(">> AVERAGE PRICE", () => PhoneAVGPrice(rserv))
+                .Add(">> PHONES WITH A SPECIFIC BRAND", () => PhoneGetAllPhonesWithASpecificBrand(rserv))
 
                 .Add(">> EXIT", ConsoleMenu.Close);
 
@@ -366,6 +367,19 @@ namespace HX0KAT_HFT_2021222.Client
             Console.WriteLine();
             Console.WriteLine("Press the enter key to continue!");
             Console.ReadLine();
+        }
+
+        private static void PhoneGetAllPhonesWithASpecificBrand(RestService rserv)
+        {
+            Console.Clear();
+
+            Console.WriteLine("Brand:");
+            string choosenBrand = Console.ReadLine();
+            var result = rserv.GetMultiple<Phone>(choosenBrand, "api/Stat/PhoneGetAllPhonesWithASpecificBrand");
+            foreach (var item in result)
+            {
+                Console.WriteLine(item.ToString());
+            }
         }
         #endregion
 

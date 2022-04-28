@@ -70,6 +70,24 @@ namespace HX0KAT_HFT_2021222.Client
             }
             return items;
         }
+        
+        //custom
+        public List<T> GetMultiple<T>(string input,string endpoint)
+        {
+            List<T> items = new List<T>();
+            HttpResponseMessage response = client.GetAsync(endpoint + "/" + input).GetAwaiter().GetResult();
+            if (response.IsSuccessStatusCode)
+            {
+                items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
+            }
+            else
+            {
+                var error = response.Content.ReadAsAsync<RestExceptionInfo>().GetAwaiter().GetResult();
+                throw new ArgumentException(error.Msg);
+            }
+            return items;
+        }
+        //---
 
         public T GetSingle<T>(string endpoint)
         {
@@ -102,6 +120,24 @@ namespace HX0KAT_HFT_2021222.Client
             }
             return item;
         }
+
+        //custom
+        public T Get<T>(string input, string endpoint)
+        {
+            T item = default(T);
+            HttpResponseMessage response = client.GetAsync(endpoint + "/" + input.ToString()).GetAwaiter().GetResult();
+            if (response.IsSuccessStatusCode)
+            {
+                item = response.Content.ReadAsAsync<T>().GetAwaiter().GetResult();
+            }
+            else
+            {
+                var error = response.Content.ReadAsAsync<RestExceptionInfo>().GetAwaiter().GetResult();
+                throw new ArgumentException(error.Msg);
+            }
+            return item;
+        }
+        //--
 
         public void Post<T>(T item, string endpoint)
         {
