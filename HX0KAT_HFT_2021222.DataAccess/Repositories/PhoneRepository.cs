@@ -14,6 +14,7 @@ namespace HX0KAT_HFT_2021222.DataAccess.Repositories
         public PhoneRepository(PhoneShopDbContext ctx) : base(ctx)
         {
         }
+
         public void UpdateBrand(int id, Brand newBrand)
         {
             Phone old = Read(id);

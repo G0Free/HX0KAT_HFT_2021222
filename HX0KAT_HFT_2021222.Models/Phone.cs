@@ -30,5 +30,10 @@ namespace HX0KAT_HFT_2021222.Models
         [JsonIgnore]
         public virtual Repairer Repairer { get; set; }
 
-    }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}, Brand: {Brand}, Model: {Model}, Price: {Price}, CustomerId: {CustomerId}, RepairerId: {RepairerId}";
+        }
+    }   
 }
