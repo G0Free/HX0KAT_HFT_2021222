@@ -12,5 +12,6 @@ namespace HX0KAT_HFT_2021222.Logic.Interfaces
         public KeyValuePair<Customer, double> CustomerWithHighestPriceSummed();
         public KeyValuePair<Customer, double> CustomerWithLowestPriceSummed();
         public IEnumerable<Phone> AllPhonesByTheGivenRepairer(int givenRepairerId);
+        public IEnumerable<Customer> AllCustomerByTheGivenRepairer(int givenRepairerId);
     }
 }

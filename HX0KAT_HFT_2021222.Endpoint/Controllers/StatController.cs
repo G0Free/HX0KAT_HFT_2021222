@@ -81,6 +81,13 @@ namespace HX0KAT_HFT_2021222.Endpoint.Controllers
         {
             return stat.AllPhonesByTheGivenRepairer(givenRepairerId);
         }
+
+        [HttpGet]
+        public IEnumerable<Customer> AllCustomerByTheGivenRepairer(int givenRepairerId)
+        {
+            return stat.AllCustomerByTheGivenRepairer(givenRepairerId);
+        }
+
         #endregion
 
     }
