@@ -25,5 +25,10 @@ namespace HX0KAT_HFT_2021222.Models
         {
             this.Phones = new HashSet<Phone>();
         }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}, Firstname: {FirstName}, Lastname: {LastName}";
+        }
     }
 }

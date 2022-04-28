@@ -23,13 +23,13 @@ namespace HX0KAT_HFT_2021222.Models
         [Required]
         public string Email { get; set; }
 
-
-
-        //[ForeignKey(nameof(Phone))]
-        //public int PhoneId { get; set; }
         [NotMapped]
         [JsonIgnore]
         public virtual ICollection<Phone> Phone { get; set; }
 
+        public override string ToString()
+        {
+            return $"Id: {Id}, Firstname: {FirstName}, LastName: {LastName}, Email: {Email}";
+        }
     }
 }
