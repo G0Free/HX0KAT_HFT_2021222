@@ -56,6 +56,11 @@ namespace HX0KAT_HFT_2021222.Logic.Services
 
 
         //---
+
+        /// <summary>
+        /// Which Customer payed the most summerized, and the summerized cost
+        /// </summary>
+        /// <returns>The Custumer and total paid amount </returns>
         public KeyValuePair<Customer, double> CustomerWithHighestPriceSummed()
         {
             var q = from x in phoneRepo.ReadAll()
@@ -63,7 +68,7 @@ namespace HX0KAT_HFT_2021222.Logic.Services
                     select new KeyValuePair<int, double>
                     (g.Key, g.Sum(c => c.Price) ?? 0);
 
-            q.OrderBy(x => x.Value);
+            //q = q.OrderBy(x => x.Value);
             
             List<KeyValuePair<Customer, double>> result = new List<KeyValuePair<Customer, double>>();
             foreach (var item in q)
@@ -71,7 +76,28 @@ namespace HX0KAT_HFT_2021222.Logic.Services
                 KeyValuePair<Customer, double> it = new KeyValuePair<Customer, double>(customerRepo.Read(item.Key), item.Value);
                 result.Add(it);
             }
+            result = result.OrderByDescending(x => x.Value).ToList();            
 
+            return result.FirstOrDefault();            
+        }
+
+        public KeyValuePair<Customer, double> CustomerWithLowestPriceSummed()
+        {
+            var q = from x in phoneRepo.ReadAll()
+                    group x by x.CustomerId into g
+                    select new KeyValuePair<int, double>
+                    (g.Key, g.Sum(c => c.Price) ?? 0);
+
+            //q = q.OrderByDescending(x => x.Value);
+
+            List<KeyValuePair<Customer, double>> result = new List<KeyValuePair<Customer, double>>();
+            foreach (var item in q)
+            {
+                KeyValuePair<Customer, double> it = new KeyValuePair<Customer, double>(customerRepo.Read(item.Key), item.Value);
+                result.Add(it);
+            }
+            result = result.OrderBy(x => x.Value).ToList();
+           
             return result.FirstOrDefault();
         }
 

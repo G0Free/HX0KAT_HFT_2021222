@@ -71,6 +71,12 @@ namespace HX0KAT_HFT_2021222.Endpoint.Controllers
         }
 
         [HttpGet]
+        public KeyValuePair<Customer, double> CustomerWithLowestPriceSummed()
+        {
+            return stat.CustomerWithLowestPriceSummed();
+        }
+
+        [HttpGet]
         public IEnumerable<Phone> AllPhonesByTheGivenRepairer(int givenRepairerId)
         {
             return stat.AllPhonesByTheGivenRepairer(givenRepairerId);
