@@ -1,6 +1,7 @@
 ﻿using ConsoleTools;
 using HX0KAT_HFT_2021222.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace HX0KAT_HFT_2021222.Client
@@ -46,7 +47,13 @@ namespace HX0KAT_HFT_2021222.Client
                 .Add(">> ALL REPAIRER WITH THE SAME FIRSTNAME", () => RepairerGetAllRepairerWithSameFirstName(rserv))
                 .Add(">> ALL REPAIRER WITH THE SAME LASTNAME", () => RepairerGetAllRepairerWithSameLastName(rserv))
 
+                //stat
+                .Add(">> CUSTOMER WITH THE HIGHEST PRICE SUMMERIZED", () => StatCustomerWithHighestPriceSummed(rserv))
+                .Add(">> CUSTOMER WITH THE LOWEST PRICE SUMMERIZED", () => StatCustomerWithLowestPriceSummed(rserv))
+                .Add(">> ALL PHONES BY THE GIVEN REPAIRER", () => StatAllPhonesByTheGivenRepairer(rserv))
+                .Add(">> ALL CUSTOMER BY THE GIVEN REPAIRER", () => StatAllCustomerByTheGivenRepairer(rserv))
 
+                
 
                 .Add(">> EXIT", ConsoleMenu.Close);
 
@@ -370,7 +377,7 @@ namespace HX0KAT_HFT_2021222.Client
             var list = rserv.Get<double>("api/Stat/PhoneAVGPrice"); foreach (var item in list)
             {
                 Console.WriteLine($"Avegrage price is: {item}");
-            }            
+            }
 
             Console.WriteLine();
             Console.WriteLine("Press the enter key to continue!");
@@ -399,9 +406,12 @@ namespace HX0KAT_HFT_2021222.Client
         private static void CustomerGetAllCustomersWithSameFirstName(RestService rserv)
         {
             Console.Clear();
-            var list = rserv.Get<double>("api/Stat/CustomerGetAllCustomersWithSameFirstName"); foreach (var item in list)
+            Console.WriteLine("Firstname:");
+            string choosenFirstName = Console.ReadLine();
+            var result = rserv.GetMultiple<Customer>(choosenFirstName, "api/Stat/CustomerGetAllCustomersWithSameFirstName");
+            foreach (var item in result)
             {
-                Console.WriteLine($"All Customer with the same firstname: {item}");
+                Console.WriteLine(item.ToString());
             }
 
             Console.WriteLine();
@@ -413,9 +423,12 @@ namespace HX0KAT_HFT_2021222.Client
         private static void CustomerGetAllCustomersWithSameLastName(RestService rserv)
         {
             Console.Clear();
-            var list = rserv.Get<double>("api/Stat/CustomerGetAllCustomersWithSameLastName"); foreach (var item in list)
+            Console.WriteLine("Lastname:");
+            string choosenLastName = Console.ReadLine();
+            var result = rserv.GetMultiple<Customer>(choosenLastName, "api/Stat/CustomerGetAllCustomersWithSameLastName");
+            foreach (var item in result)
             {
-                Console.WriteLine($"All Customer with the same lastname: {item}");
+                Console.WriteLine(item.ToString());
             }
 
             Console.WriteLine();
@@ -429,9 +442,12 @@ namespace HX0KAT_HFT_2021222.Client
         private static void RepairerGetAllRepairerWithSameFirstName(RestService rserv)
         {
             Console.Clear();
-            var list = rserv.Get<double>("api/Stat/RepairerGetAllRepairerWithSameFirstName"); foreach (var item in list)
+            Console.WriteLine("Firstname:");
+            string choosenFirstName = Console.ReadLine();
+            var result = rserv.GetMultiple<Repairer>(choosenFirstName, "api/Stat/RepairerGetAllRepairerWithSameFirstName");
+            foreach (var item in result)
             {
-                Console.WriteLine($"All Repairer with the same firstname: {item}");
+                Console.WriteLine(item.ToString());
             }
 
             Console.WriteLine();
@@ -442,9 +458,12 @@ namespace HX0KAT_HFT_2021222.Client
         private static void RepairerGetAllRepairerWithSameLastName(RestService rserv)
         {
             Console.Clear();
-            var list = rserv.Get<double>("api/Stat/RepairerGetAllRepairerWithSameLastName"); foreach (var item in list)
+            Console.WriteLine("Lastname:");
+            string choosenLastName = Console.ReadLine();
+            var result = rserv.GetMultiple<Customer>(choosenLastName, "api/Stat/RepairerGetAllRepairerWithSameLastName");
+            foreach (var item in result)
             {
-                Console.WriteLine($"All Repairer with the same lastname: {item}");
+                Console.WriteLine(item.ToString());
             }
 
             Console.WriteLine();
@@ -452,6 +471,72 @@ namespace HX0KAT_HFT_2021222.Client
             Console.ReadLine();
         }
         #endregion
+
+        #region stat
+        private static void StatCustomerWithHighestPriceSummed(RestService rserv)
+        {
+            Console.Clear();
+            var result = rserv.GetSingle<KeyValuePair<Customer, double>>("api/Stat/CustomerWithHighestPriceSummed");
+            
+            Console.WriteLine($"Customer with highest price: {result.Key} payed: {result.Value}");
+
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+        }
+
+        private static void StatCustomerWithLowestPriceSummed(RestService rserv)
+        {
+            Console.Clear();
+            var result = rserv.GetSingle<KeyValuePair<Customer, double>>("api/Stat/CustomerWithLowestPriceSummed");
+            
+            Console.WriteLine($"Customer with lowest price: {result.Key} payed: {result.Value}");
+
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+        }
+
+        private static void StatAllPhonesByTheGivenRepairer(RestService rserv)
+        {
+            Console.Clear();
+            Console.WriteLine("Repairer Id:");
+            int choosenId = int.Parse(Console.ReadLine());
+            var choosenRepairer = rserv.Get<Repairer>(choosenId, "api/Repairer");
+            Console.WriteLine(choosenRepairer);
+            Console.WriteLine();
+            var result = rserv.GetMultiple<Phone>(choosenId, "api/Stat/AllPhonesByTheGivenRepairer");
+            foreach (var item in result)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+        }
+
+        private static void StatAllCustomerByTheGivenRepairer(RestService rserv)
+        {
+            Console.Clear();
+            Console.WriteLine("Repairer Id:");
+            int choosenId = int.Parse(Console.ReadLine());
+            var choosenRepairer = rserv.Get<Repairer>(choosenId, "api/Repairer");
+            Console.WriteLine(choosenRepairer);
+            Console.WriteLine();
+            var result = rserv.GetMultiple<Customer>(choosenId, "api/Stat/AllCustomerByTheGivenRepairer");
+            foreach (var item in result)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+        }
+
+        #endregion
+
 
         #endregion
     }

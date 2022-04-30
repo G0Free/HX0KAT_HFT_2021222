@@ -38,20 +38,19 @@ namespace HX0KAT_HFT_2021222.Endpoint.Controllers
         #endregion
 
         #region customer
-        [HttpGet("{firstname}")]
+        [HttpGet("{firstName}")]
         public IEnumerable<Customer> CustomerGetAllCustomersWithSameFirstName(string firstName)
         {
            return cl.GetAllCustomersWithSameFirstName(firstName);
         }
-        [HttpGet("{lastname}")]
+        [HttpGet("{lastName}")]
         public IEnumerable<Customer> CustomerGetAllCustomersWithSameLastName(string lastName)
         {
-            return cl.GetAllCustomersWithSameLastName(lastName);            
+            return cl.GetAllCustomersWithSameLastName(lastName);
         }
         #endregion
 
         #region repairer
-
         [HttpGet("{firstname}")]
         public IEnumerable<Repairer> RepairerGetAllRepairerWithSameFirstName(string firstName)
         {
@@ -77,13 +76,13 @@ namespace HX0KAT_HFT_2021222.Endpoint.Controllers
             return stat.CustomerWithLowestPriceSummed();
         }
 
-        [HttpGet]
+        [HttpGet("{givenRepairerId}")]
         public IEnumerable<Phone> AllPhonesByTheGivenRepairer(int givenRepairerId)
         {
             return stat.AllPhonesByTheGivenRepairer(givenRepairerId);
         }
 
-        [HttpGet]
+        [HttpGet("{givenRepairerId}")]
         public IEnumerable<Customer> AllCustomerByTheGivenRepairer(int givenRepairerId)
         {
             return stat.AllCustomerByTheGivenRepairer(givenRepairerId);

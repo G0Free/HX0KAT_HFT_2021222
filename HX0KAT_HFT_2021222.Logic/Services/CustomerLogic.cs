@@ -71,10 +71,9 @@ namespace HX0KAT_HFT_2021222.Logic.Services
 
         public IEnumerable<Customer> GetAllCustomersWithSameLastName(string lastName)
         {
-            var q = from x in customerRepo.ReadAll()
-                    where x.LastName.Contains(lastName)
-                    select x;
-
+            var q = from customer in customerRepo.ReadAll()
+                    where customer.LastName.Contains(lastName)
+                    select customer;
             return q;
         }
 
