@@ -10,8 +10,6 @@ namespace HX0KAT_HFT_2021222.DataAccess.Data
 {
     public class PhoneShopDbContext : DbContext
     {
-
-
         public PhoneShopDbContext()
         {
             this.Database.EnsureCreated();
@@ -38,8 +36,7 @@ namespace HX0KAT_HFT_2021222.DataAccess.Data
             {
                 entity
                 .HasMany(customer => customer.Phone)
-                .WithOne(phone => phone.Customer)
-                //.HasForeignKey(customer => customer.PhoneId)
+                .WithOne(phone => phone.Customer)                
                 .OnDelete(DeleteBehavior.Cascade);
             });
 
@@ -79,9 +76,6 @@ namespace HX0KAT_HFT_2021222.DataAccess.Data
 
 
             #region ForeignKeysSet
-            //customer1.PhoneId = phone1.Id;
-            //customer2.PhoneId = phone2.Id;
-            //customer3.PhoneId = phone3.Id;
 
             phone1.CustomerId = customer1.Id;
             phone2.CustomerId = customer2.Id;
