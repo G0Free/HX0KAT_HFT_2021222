@@ -30,7 +30,7 @@ namespace HX0KAT_HFT_2021222.Endpoint.Controllers
             return pl.AVGPrice();
         }
 
-        [HttpGet]
+        [HttpGet("{brand}")]
         public IEnumerable<Phone> PhoneGetAllPhonesWithASpecificBrand(string brand)
         {
             return pl.GetAllPhonesWithASpecificBrand(brand);
@@ -38,12 +38,12 @@ namespace HX0KAT_HFT_2021222.Endpoint.Controllers
         #endregion
 
         #region customer
-        [HttpGet]
+        [HttpGet("{firstname}")]
         public IEnumerable<Customer> CustomerGetAllCustomersWithSameFirstName(string firstName)
         {
            return cl.GetAllCustomersWithSameFirstName(firstName);
         }
-        [HttpGet]
+        [HttpGet("{lastname}")]
         public IEnumerable<Customer> CustomerGetAllCustomersWithSameLastName(string lastName)
         {
             return cl.GetAllCustomersWithSameLastName(lastName);            
@@ -51,12 +51,13 @@ namespace HX0KAT_HFT_2021222.Endpoint.Controllers
         #endregion
 
         #region repairer
-        [HttpGet]
+
+        [HttpGet("{firstname}")]
         public IEnumerable<Repairer> RepairerGetAllRepairerWithSameFirstName(string firstName)
         {
             return rl.GetAllRepairerWithSameFirstName(firstName);
         }
-        [HttpGet]
+        [HttpGet("{lastname}")]
         public IEnumerable<Repairer> RepairerGetAllRepairerWithSameLastName(string lastName)
         {
             return rl.GetAllRepairerWithSameLastName(lastName);

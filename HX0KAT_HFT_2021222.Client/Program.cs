@@ -33,10 +33,20 @@ namespace HX0KAT_HFT_2021222.Client
                 .Add(">> DELETE A PHONE", () => DeletePhone(rserv))
                 .Add(">> DELETE A CUSTOMER", () => DeleteCustomer(rserv))
                 .Add(">> DELETE A REPAIRER", () => DeleteRepairer(rserv))
-                
-                
+
+                //phone
                 .Add(">> AVERAGE PRICE", () => PhoneAVGPrice(rserv))
                 .Add(">> PHONES WITH A SPECIFIC BRAND", () => PhoneGetAllPhonesWithASpecificBrand(rserv))
+
+                //custmoer
+                .Add(">> ALL CUSTOMERS WITH THE SAME FIRSTNAME", () => CustomerGetAllCustomersWithSameFirstName(rserv))
+                .Add(">> ALL CUSTOMERS WITH THE SAME LASTNAME", () => CustomerGetAllCustomersWithSameLastName(rserv))
+
+                //repairer
+                .Add(">> ALL REPAIRER WITH THE SAME FIRSTNAME", () => RepairerGetAllRepairerWithSameFirstName(rserv))
+                .Add(">> ALL REPAIRER WITH THE SAME LASTNAME", () => RepairerGetAllRepairerWithSameLastName(rserv))
+
+
 
                 .Add(">> EXIT", ConsoleMenu.Close);
 
@@ -154,7 +164,7 @@ namespace HX0KAT_HFT_2021222.Client
             Phone phone = new Phone();
 
             Console.WriteLine("Brand:");
-            phone.Brand = Console.ReadLine();            
+            phone.Brand = Console.ReadLine();
 
             Console.WriteLine("Model:");
             phone.Model = Console.ReadLine();
@@ -360,9 +370,7 @@ namespace HX0KAT_HFT_2021222.Client
             var list = rserv.Get<double>("api/Stat/PhoneAVGPrice"); foreach (var item in list)
             {
                 Console.WriteLine($"Avegrage price is: {item}");
-            }
-            //double result = rserv.Get<double>("api/Stat/PhoneAVGPrice");
-            //Console.WriteLine($"Avegrage price is: {result}");
+            }            
 
             Console.WriteLine();
             Console.WriteLine("Press the enter key to continue!");
@@ -380,15 +388,69 @@ namespace HX0KAT_HFT_2021222.Client
             {
                 Console.WriteLine(item.ToString());
             }
+
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
         }
         #endregion
 
         #region customer
+        private static void CustomerGetAllCustomersWithSameFirstName(RestService rserv)
+        {
+            Console.Clear();
+            var list = rserv.Get<double>("api/Stat/CustomerGetAllCustomersWithSameFirstName"); foreach (var item in list)
+            {
+                Console.WriteLine($"All Customer with the same firstname: {item}");
+            }
 
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+
+        }
+
+        private static void CustomerGetAllCustomersWithSameLastName(RestService rserv)
+        {
+            Console.Clear();
+            var list = rserv.Get<double>("api/Stat/CustomerGetAllCustomersWithSameLastName"); foreach (var item in list)
+            {
+                Console.WriteLine($"All Customer with the same lastname: {item}");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+
+        }
         #endregion
 
         #region repairer
+        private static void RepairerGetAllRepairerWithSameFirstName(RestService rserv)
+        {
+            Console.Clear();
+            var list = rserv.Get<double>("api/Stat/RepairerGetAllRepairerWithSameFirstName"); foreach (var item in list)
+            {
+                Console.WriteLine($"All Repairer with the same firstname: {item}");
+            }
 
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+        }
+
+        private static void RepairerGetAllRepairerWithSameLastName(RestService rserv)
+        {
+            Console.Clear();
+            var list = rserv.Get<double>("api/Stat/RepairerGetAllRepairerWithSameLastName"); foreach (var item in list)
+            {
+                Console.WriteLine($"All Repairer with the same lastname: {item}");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Press the enter key to continue!");
+            Console.ReadLine();
+        }
         #endregion
 
         #endregion
