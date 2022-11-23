@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:HX0KAT_HFT_2021222.WPFClient"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
     <Grid>
 
     </Grid>
