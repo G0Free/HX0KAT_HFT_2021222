@@ -10,6 +10,17 @@
         <local:MainWindowViewModel />
     </Window.DataContext>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
 
+        <ListBox Grid.Column="0">
+            <Label>PlaceHolder01</Label>
+        </ListBox>
+
+        <StackPanel Grid.Column="1">
+            <Label>PlaceHolder02</Label>
+        </StackPanel>
     </Grid>
 </Window>
