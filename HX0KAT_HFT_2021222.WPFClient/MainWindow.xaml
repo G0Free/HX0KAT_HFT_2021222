@@ -20,7 +20,11 @@
         </ListBox>
 
         <StackPanel Grid.Column="1">
+            <Label Content="Name" Background="LightBlue" Padding="10" />
             <Label>PlaceHolder02</Label>
+            <Button Content="Create" Command="{}" Margin="10" Padding="10"/>
+            <Button Content="Delete" Command="{}" Margin="10" Padding="10"/>
+            <Button Content="Update" Command="{}" Margin="10" Padding="10"/>
         </StackPanel>
     </Grid>
 </Window>
