@@ -9,22 +9,52 @@
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
 
-        <ListBox Grid.Column="0">
-            <Label>PlaceHolder01</Label>
-        </ListBox>
+        <TabControl x:Name="tabControl" Grid.Row="1">
+            <TabItem Header="Customers">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="1">
-            <Label Content="Name" Background="LightBlue" Padding="10" />
-            <Label>PlaceHolder02</Label>
-            <Button Content="Create" Command="{}" Margin="10" Padding="10"/>
-            <Button Content="Delete" Command="{}" Margin="10" Padding="10"/>
-            <Button Content="Update" Command="{}" Margin="10" Padding="10"/>
-        </StackPanel>
+                    <ListBox Grid.Column="0" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding FirstName}">
+
+                                </Label>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <Grid Grid.Column="1" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="9*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" Content="Customers" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="20" Background="LightBlue"/>
+
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Center" >
+                            <Button Content="Create" Command="{Binding CreateCustomerCommand}" Margin="5" Padding="5"/>
+                            <Button Content="Delete" Command="{Binding DeleteCustomerCommand}" Margin="5" Padding="5"/>
+                            <Button Content="Update" Command="{Binding UpdateCustomerCommand}" Margin="5" Padding="5"/>
+                            <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
+                        </StackPanel>
+                    </Grid>
+
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="IndianRed"/>
+            </TabItem>
+        </TabControl>
+
     </Grid>
+
+
 </Window>
