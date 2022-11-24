@@ -63,7 +63,7 @@ namespace HX0KAT_HFT_2021222.WPFClient
         {
             if (!IsInDesignMode)
             {
-                Customers = new RestCollection<Customer>("http://localhost:5236/", "customer", "hub"); //TODO: Check the proper link
+                Customers = new RestCollection<Customer>("http://localhost:5236/", "customer", "hub");
                 CreateCustomerCommand = new RelayCommand(() =>
                 {
                     Customers.Add(new Customer() //Itt új ablakban kéne létrehozni az újat
@@ -96,7 +96,7 @@ namespace HX0KAT_HFT_2021222.WPFClient
                 {
                     return SelectedCustomer != null;
                 });
-                SelectedCustomer = new Customer();
+                SelectedCustomer = null;
             }
         }
     }
