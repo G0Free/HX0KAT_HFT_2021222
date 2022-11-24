@@ -1,4 +1,5 @@
 ﻿using HX0KAT_HFT_2021222.Models;
+using HX0KAT_HFT_2021222.WPFClient.Views;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
@@ -66,14 +67,20 @@ namespace HX0KAT_HFT_2021222.WPFClient
                 Customers = new RestCollection<Customer>("http://localhost:5236/", "customer", "hub");
                 CreateCustomerCommand = new RelayCommand(() =>
                 {
-                    Customers.Add(new Customer() //Itt új ablakban kéne létrehozni az újat
+                    Customer customer = new Customer();
+                    CustomerEditorView CustomerEditor = new CustomerEditorView(customer);
+                    if (CustomerEditor.ShowDialog() == true)
                     {
-                        FirstName = SelectedCustomer.FirstName,
-                        LastName = SelectedCustomer.LastName,
-                        Email = SelectedCustomer.Email,
-                        Id = SelectedCustomer.Id,
-                        Phone = SelectedCustomer.Phone,
-                    });
+                        Customers.Add(customer);
+                    }
+                    //Customers.Add(new Customer() //Itt új ablakban kéne létrehozni az újat
+                    //{
+                    //    FirstName = SelectedCustomer.FirstName,
+                    //    LastName = SelectedCustomer.LastName,
+                    //    Email = SelectedCustomer.Email,
+                    //    Id = SelectedCustomer.Id,
+                    //    Phone = SelectedCustomer.Phone,
+                    //});
                 });
 
                 UpdateCustomerCommand = new RelayCommand(() =>
@@ -90,7 +97,7 @@ namespace HX0KAT_HFT_2021222.WPFClient
 
                 DeleteCustomerCommand = new RelayCommand(() =>
                 {
-                        Customers.Delete(SelectedCustomer.Id);                    
+                    Customers.Delete(SelectedCustomer.Id);
                 },
                 () =>
                 {
