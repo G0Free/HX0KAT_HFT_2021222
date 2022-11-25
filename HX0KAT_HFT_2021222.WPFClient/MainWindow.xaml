@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HX0KAT_HFT_2021222.WPFClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="1200">
+        Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
@@ -23,17 +23,32 @@
                     <ListBox Grid.Column="0" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel>
-                                    <Label Content="{Binding Id}"></Label>
-                                    <Label Content="{Binding FirstName}"></Label>
-                                    <Label Content="{Binding LastName}"></Label>
-                                    <Label Content="{Binding Email}"></Label>
-                                </StackPanel>                                
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Grid.Row="0" Grid.Column="0" Content="Id"></Label>
+                                    <Label Grid.Row="0" Grid.Column="1" Content="{Binding Id}"></Label>
+                                    <Label Grid.Row="1" Grid.Column="0" Content="Firstname"></Label>
+                                    <Label Grid.Row="1" Grid.Column="1" Content="{Binding FirstName}"></Label>
+                                    <Label Grid.Row="2" Grid.Column="0" Content="Lastname"></Label>
+                                    <Label Grid.Row="2" Grid.Column="1" Content="{Binding LastName}"></Label>
+                                    <Label Grid.Row="3" Grid.Column="0" Content="Email"></Label>
+                                    <Label Grid.Row="3" Grid.Column="1" Content="{Binding Email}"></Label>
+                                </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
 
-                    <Grid Grid.Column="1" >
+                    <Grid Grid.Column="1" Background="LightGray" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"></RowDefinition>
                             <RowDefinition Height="9*"></RowDefinition>
@@ -45,7 +60,7 @@
                             <Button Content="Create" Command="{Binding CreateCustomerCommand}" Margin="5" Padding="5"/>
                             <Button Content="Update" Command="{Binding UpdateCustomerCommand}" Margin="5" Padding="5"/>
                             <Button Content="Delete" Command="{Binding DeleteCustomerCommand}" Margin="5" Padding="5"/>
-                            <Label Content="{Binding ErrorMessage}" Foreground="Red" HorizontalContentAlignment="Center" Height="auto"/>
+                            <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" HorizontalAlignment="Center" Height="auto" Margin="10" Padding="5" TextWrapping="Wrap"></TextBlock>
                         </StackPanel>
                     </Grid>
 
@@ -62,31 +77,50 @@
                     <ListBox Grid.Column="0" ItemsSource="{Binding Phones}" SelectedItem="{Binding SelectedPhone}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel>
-                                    <Label Content="{Binding Id}"></Label>
-                                    <Label Content="{Binding Brand}"></Label>
-                                    <Label Content="{Binding Model}"></Label>
-                                    <Label Content="{Binding Price}"></Label>
-                                    <Label Content="{Binding CustomerId}"></Label>
-                                    <Label Content="{Binding RepairerId}"></Label>
-                                </StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                        <RowDefinition Height="1*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Grid.Row="0" Grid.Column="0" Content="Id"></Label>
+                                    <Label Grid.Row="0" Grid.Column="1" Content="{Binding Id}"></Label>
+                                    <Label Grid.Row="1" Grid.Column="0" Content="Brand"></Label>
+                                    <Label Grid.Row="1" Grid.Column="1" Content="{Binding Brand}"></Label>
+                                    <Label Grid.Row="2" Grid.Column="0" Content="Model"></Label>
+                                    <Label Grid.Row="2" Grid.Column="1" Content="{Binding Model}"></Label>
+                                    <Label Grid.Row="3" Grid.Column="0" Content="Price"></Label>
+                                    <Label Grid.Row="3" Grid.Column="1" Content="{Binding Price}"></Label>
+                                    <Label Grid.Row="4" Grid.Column="0" Content="CustomerId"></Label>
+                                    <Label Grid.Row="4" Grid.Column="1" Content="{Binding CustomerId}"></Label>
+                                    <Label Grid.Row="5" Grid.Column="0" Content="RepairerId"></Label>
+                                    <Label Grid.Row="5" Grid.Column="1" Content="{Binding RepairerId}"></Label>
+                                </Grid>                               
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
 
-                    <Grid Grid.Column="1" >
+                    <Grid Grid.Column="1" Background="LightGray">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"></RowDefinition>
                             <RowDefinition Height="9*"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <Label Grid.Row="0" Content="Customers" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="20" Background="LightBlue"/>
+                        <Label Grid.Row="0" Content="Phones" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="20" Background="LightGreen"/>
 
                         <StackPanel Grid.Row="1" HorizontalAlignment="Center" Width="150" >
                             <Button Content="Create" Command="{Binding CreatePhoneCommand}" Margin="5" Padding="5"/>
                             <Button Content="Update" Command="{Binding UpdatePhoneCommand}" Margin="5" Padding="5"/>
                             <Button Content="Delete" Command="{Binding DeletePhoneCommand}" Margin="5" Padding="5"/>
-                            <Label Content="{Binding ErrorMessage}" Foreground="Red" HorizontalContentAlignment="Center" Height="auto"/>
+                            <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" HorizontalAlignment="Center" Height="auto" Margin="10" Padding="5" TextWrapping="Wrap"></TextBlock>
                         </StackPanel>
                     </Grid>
 
