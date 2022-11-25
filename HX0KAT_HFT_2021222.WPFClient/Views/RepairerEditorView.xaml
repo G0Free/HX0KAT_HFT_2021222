@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HX0KAT_HFT_2021222.WPFClient.Views"
         xmlns:models="clr-namespace:HX0KAT_HFT_2021222.Models;assembly=HX0KAT_HFT_2021222.Models"
         mc:Ignorable="d"
-        Title="RepairerEditorView" Height="450" Width="800">
+        Title="RepairerEditorView" Height="450" Width="400">
     <Window.DataContext>
         <models:Repairer></models:Repairer>
     </Window.DataContext>

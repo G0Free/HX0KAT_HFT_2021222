@@ -103,7 +103,7 @@
                                     <Label Grid.Row="4" Grid.Column="1" Content="{Binding CustomerId}"></Label>
                                     <Label Grid.Row="5" Grid.Column="0" Content="RepairerId"></Label>
                                     <Label Grid.Row="5" Grid.Column="1" Content="{Binding RepairerId}"></Label>
-                                </Grid>                               
+                                </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
@@ -126,7 +126,6 @@
 
                 </Grid>
             </TabItem>
-
             <TabItem Header="Repairers">
                 <Grid>
                     <Grid.ColumnDefinitions>
