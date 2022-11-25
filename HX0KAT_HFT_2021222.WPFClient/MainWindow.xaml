@@ -59,14 +59,16 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
 
-                    <ListBox Grid.Column="0" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer}">
+                    <ListBox Grid.Column="0" ItemsSource="{Binding Phones}" SelectedItem="{Binding SelectedPhone}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
                                     <Label Content="{Binding Id}"></Label>
-                                    <Label Content="{Binding FirstName}"></Label>
-                                    <Label Content="{Binding LastName}"></Label>
-                                    <Label Content="{Binding Email}"></Label>
+                                    <Label Content="{Binding Brand}"></Label>
+                                    <Label Content="{Binding Model}"></Label>
+                                    <Label Content="{Binding Price}"></Label>
+                                    <Label Content="{Binding CustomerId}"></Label>
+                                    <Label Content="{Binding RepairerId}"></Label>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
@@ -81,9 +83,9 @@
                         <Label Grid.Row="0" Content="Customers" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="20" Background="LightBlue"/>
 
                         <StackPanel Grid.Row="1" HorizontalAlignment="Center" Width="150" >
-                            <Button Content="Create" Command="{Binding CreateCustomerCommand}" Margin="5" Padding="5"/>
-                            <Button Content="Update" Command="{Binding UpdateCustomerCommand}" Margin="5" Padding="5"/>
-                            <Button Content="Delete" Command="{Binding DeleteCustomerCommand}" Margin="5" Padding="5"/>
+                            <Button Content="Create" Command="{Binding CreatePhoneCommand}" Margin="5" Padding="5"/>
+                            <Button Content="Update" Command="{Binding UpdatePhoneCommand}" Margin="5" Padding="5"/>
+                            <Button Content="Delete" Command="{Binding DeletePhoneCommand}" Margin="5" Padding="5"/>
                             <Label Content="{Binding ErrorMessage}" Foreground="Red" HorizontalContentAlignment="Center" Height="auto"/>
                         </StackPanel>
                     </Grid>
