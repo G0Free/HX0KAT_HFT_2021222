@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HX0KAT_HFT_2021222.WPFClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="1200">
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
@@ -41,19 +41,54 @@
 
                         <Label Grid.Row="0" Content="Customers" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="20" Background="LightBlue"/>
 
-                        <StackPanel Grid.Row="1" HorizontalAlignment="Center" >
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Width="150" >
                             <Button Content="Create" Command="{Binding CreateCustomerCommand}" Margin="5" Padding="5"/>
-                            <Button Content="Delete" Command="{Binding DeleteCustomerCommand}" Margin="5" Padding="5"/>
                             <Button Content="Update" Command="{Binding UpdateCustomerCommand}" Margin="5" Padding="5"/>
-                            <Label Content="{Binding ErrorMessage}" Foreground="Red" HorizontalContentAlignment="Center" />
+                            <Button Content="Delete" Command="{Binding DeleteCustomerCommand}" Margin="5" Padding="5"/>
+                            <Label Content="{Binding ErrorMessage}" Foreground="Red" HorizontalContentAlignment="Center" Height="auto"/>
                         </StackPanel>
                     </Grid>
 
                 </Grid>
 
             </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="IndianRed"/>
+            <TabItem Header="Phone">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ListBox Grid.Column="0" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Label Content="{Binding Id}"></Label>
+                                    <Label Content="{Binding FirstName}"></Label>
+                                    <Label Content="{Binding LastName}"></Label>
+                                    <Label Content="{Binding Email}"></Label>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <Grid Grid.Column="1" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="9*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" Content="Customers" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Center" FontSize="20" Background="LightBlue"/>
+
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Width="150" >
+                            <Button Content="Create" Command="{Binding CreateCustomerCommand}" Margin="5" Padding="5"/>
+                            <Button Content="Update" Command="{Binding UpdateCustomerCommand}" Margin="5" Padding="5"/>
+                            <Button Content="Delete" Command="{Binding DeleteCustomerCommand}" Margin="5" Padding="5"/>
+                            <Label Content="{Binding ErrorMessage}" Foreground="Red" HorizontalContentAlignment="Center" Height="auto"/>
+                        </StackPanel>
+                    </Grid>
+
+                </Grid>
             </TabItem>
         </TabControl>
 

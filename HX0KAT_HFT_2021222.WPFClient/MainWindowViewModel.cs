@@ -24,6 +24,7 @@ namespace HX0KAT_HFT_2021222.WPFClient
             set { SetProperty(ref errorMessage, value); }
         }
 
+        #region Customer
         public RestCollection<Customer> Customers { get; set; }
         private Customer selectedCustomer;
 
@@ -53,6 +54,45 @@ namespace HX0KAT_HFT_2021222.WPFClient
         public ICommand DeleteCustomerCommand { get; set; }
         public ICommand UpdateCustomerCommand { get; set; }
 
+        #endregion
+
+        #region Phone
+
+        public RestCollection<Phone> Phones { get; set; }
+        private Phone selectedPhone;
+
+        public Phone SelectedPhone
+        {
+            get
+            {
+                return selectedPhone;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    selectedPhone = new Phone()
+                    {
+                        Id = value.Id,
+                        Brand = value.Brand,
+                        Model = value.Model,
+                        Price = value.Price,
+                        CustomerId = value.CustomerId,
+                        RepairerId = value.RepairerId,
+                    };
+                    OnPropertyChanged();
+                    (DeletePhoneCommand as RelayCommand).NotifyCanExecuteChanged();
+                    (UpdatePhoneCommand as RelayCommand).NotifyCanExecuteChanged();
+                }
+            }
+        }
+
+        public ICommand CreatePhoneCommand { get; set; }
+        public ICommand DeletePhoneCommand { get; set; }
+        public ICommand UpdatePhoneCommand { get; set; }
+
+        #endregion
+
         public static bool IsInDesignMode
         {
             get
@@ -66,6 +106,8 @@ namespace HX0KAT_HFT_2021222.WPFClient
         {
             if (!IsInDesignMode)
             {
+                #region Customer
+
                 Customers = new RestCollection<Customer>("http://localhost:5236/", "Customer", "hub");
                 CreateCustomerCommand = new RelayCommand(() =>
                 {
@@ -75,14 +117,6 @@ namespace HX0KAT_HFT_2021222.WPFClient
                     {
                         Customers.Add(customer);
                     }
-                    //Customers.Add(new Customer() //Itt új ablakban kéne létrehozni az újat
-                    //{
-                    //    FirstName = SelectedCustomer.FirstName,
-                    //    LastName = SelectedCustomer.LastName,
-                    //    Email = SelectedCustomer.Email,
-                    //    Id = SelectedCustomer.Id,
-                    //    Phone = SelectedCustomer.Phone,
-                    //});
                 });
 
                 UpdateCustomerCommand = new RelayCommand(() =>
@@ -92,8 +126,8 @@ namespace HX0KAT_HFT_2021222.WPFClient
                         CustomerEditorView CustomerEditor = new CustomerEditorView(SelectedCustomer);
                         if (CustomerEditor.ShowDialog() == true)
                         {
-                            Customers.Update(SelectedCustomer);
-                        }                        
+                            Customers.Update(SelectedCustomer);                            
+                        }
                     }
                     catch (ArgumentException ex)
                     {
@@ -107,16 +141,61 @@ namespace HX0KAT_HFT_2021222.WPFClient
 
                 DeleteCustomerCommand = new RelayCommand(() =>
                 {
-                //Dispatcher.Invoke((Action)(() =>
-                // Dispatcher.CurrentDispatcher.Invoke((Action)(() =>
-                Customers.Delete(SelectedCustomer.Id);
-                    //));
+                    Customers.Delete(SelectedCustomer.Id);
                 },
                 () =>
                 {
                     return SelectedCustomer != null;
                 });
                 SelectedCustomer = new Customer();
+
+                #endregion
+
+                #region Phone
+
+                Phones = new RestCollection<Phone>("http://localhost:5236/", "Phone", "hub");
+
+                CreatePhoneCommand = new RelayCommand(() =>
+                {
+                    Phone phone = new Phone();
+                    PhoneEditorView PhoneEditor = new PhoneEditorView(phone);
+                    if (PhoneEditor.ShowDialog() == true)
+                    {
+                        Phones.Add(phone);
+                    }
+                });
+
+                UpdatePhoneCommand = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        PhoneEditorView PhoneEditor = new PhoneEditorView(SelectedPhone);
+                        if (PhoneEditor.ShowDialog() == true)
+                        {
+                            Phones.Update(SelectedPhone);
+                        }
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        ErrorMessage = ex.Message;
+                    }
+                },
+                () =>
+                {
+                    return SelectedPhone != null;
+                });
+
+                DeletePhoneCommand = new RelayCommand(() =>
+                {
+                    Phones.Delete(SelectedPhone.Id);
+                },
+                () =>
+                {
+                    return SelectedPhone != null;
+                });
+                SelectedPhone = new Phone();
+
+                #endregion
             }
         }
     }

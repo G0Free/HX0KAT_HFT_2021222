@@ -4,17 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HX0KAT_HFT_2021222.WPFClient.Views"
-        xmlns:customers="clr-namespace:HX0KAT_HFT_2021222.Models;assembly=HX0KAT_HFT_2021222.Models"
+        xmlns:models="clr-namespace:HX0KAT_HFT_2021222.Models;assembly=HX0KAT_HFT_2021222.Models"
         mc:Ignorable="d"
         Title="CustomerEditorView" Height="450" Width="400">
     <Window.DataContext>
-        <customers:Customer></customers:Customer>
+        <models:Customer></models:Customer>
     </Window.DataContext>
     
     <Grid>
         <StackPanel x:Name="stackpanel">
             <Label Content="Id" Background="LightBlue" Padding="5"></Label>
-            <TextBox Text="{Binding Id}" Padding="5"></TextBox>
+            <TextBox Text="{Binding Id}" Padding="5" IsEnabled="False"></TextBox>
             <Label Content="FirstName" Background="LightBlue" Padding="5"></Label>
             <TextBox Text="{Binding FirstName}" Padding="5"></TextBox>
             <Label Content="LastName" Background="LightBlue" Padding="5"></Label>
