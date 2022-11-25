@@ -93,6 +93,37 @@ namespace HX0KAT_HFT_2021222.WPFClient
 
         #endregion
 
+        #region Repairer
+
+        public RestCollection<Repairer> Repairers { get; set; }
+        private Repairer selectedRepairer;
+
+        public Repairer SelectedRepairer
+        {
+            get { return selectedRepairer; }
+            set 
+            {
+                if (value != null)
+                {
+                    selectedRepairer = new Repairer()
+                    {
+                        Id = value.Id,
+                        FirstName = value.FirstName,
+                        LastName = value.LastName,
+                    };
+                    OnPropertyChanged();
+                    (DeleteRepairerCommand as RelayCommand).NotifyCanExecuteChanged();
+                    (UpdateRepairerCommand as RelayCommand).NotifyCanExecuteChanged();
+                }
+            }
+        }
+
+        public ICommand CreateRepairerCommand { get; set; }
+        public ICommand DeleteRepairerCommand { get; set; }
+        public ICommand UpdateRepairerCommand { get; set; }
+
+
+        #endregion
         public static bool IsInDesignMode
         {
             get
@@ -194,6 +225,52 @@ namespace HX0KAT_HFT_2021222.WPFClient
                     return SelectedPhone != null;
                 });
                 SelectedPhone = new Phone();
+
+                #endregion
+
+                #region Repairer
+
+                Repairers = new RestCollection<Repairer>("http://localhost:5236/", "Repairer", "hub");
+
+                CreateRepairerCommand = new RelayCommand(() =>
+                {
+                    Repairer repairer= new Repairer();
+                    RepairerEditorView RepairerEditor = new RepairerEditorView(repairer);
+                    if (RepairerEditor.ShowDialog() == true)
+                    {
+                        Repairers.Add(repairer);
+                    }
+                });
+
+                UpdateRepairerCommand = new RelayCommand(() =>
+                {
+                    try
+                    {
+                        RepairerEditorView RepairerEditor = new RepairerEditorView(SelectedRepairer);
+                        if (RepairerEditor.ShowDialog() == true)
+                        {
+                            Repairers.Update(SelectedRepairer);
+                        }
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        ErrorMessage = ex.Message;
+                    }
+                },
+               () =>
+               {
+                   return SelectedRepairer != null;
+               });
+
+                DeleteRepairerCommand = new RelayCommand(() =>
+                {
+                    Repairers.Delete(SelectedRepairer.Id);
+                },
+                () =>
+                {
+                    return SelectedRepairer != null;
+                });
+                SelectedRepairer = new Repairer();
 
                 #endregion
             }
