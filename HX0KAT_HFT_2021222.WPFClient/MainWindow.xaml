@@ -16,16 +16,19 @@
             <TabItem Header="Customers">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="6*"/>
-                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
 
                     <ListBox Grid.Column="0" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Label Content="{Binding FirstName}">
-
-                                </Label>
+                                <StackPanel>
+                                    <Label Content="{Binding Id}"></Label>
+                                    <Label Content="{Binding FirstName}"></Label>
+                                    <Label Content="{Binding LastName}"></Label>
+                                    <Label Content="{Binding Email}"></Label>
+                                </StackPanel>                                
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
@@ -42,7 +45,7 @@
                             <Button Content="Create" Command="{Binding CreateCustomerCommand}" Margin="5" Padding="5"/>
                             <Button Content="Delete" Command="{Binding DeleteCustomerCommand}" Margin="5" Padding="5"/>
                             <Button Content="Update" Command="{Binding UpdateCustomerCommand}" Margin="5" Padding="5"/>
-                            <Label Content="{Binding ErrorMessage}" FontSize="18" Foreground="Red" HorizontalContentAlignment="Center" />
+                            <Label Content="{Binding ErrorMessage}" Foreground="Red" HorizontalContentAlignment="Center" />
                         </StackPanel>
                     </Grid>
 

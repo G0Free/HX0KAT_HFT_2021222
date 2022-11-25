@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace HX0KAT_HFT_2021222.WPFClient
 {
@@ -43,6 +44,7 @@ namespace HX0KAT_HFT_2021222.WPFClient
                     };
                     OnPropertyChanged();
                     (DeleteCustomerCommand as RelayCommand).NotifyCanExecuteChanged();
+                    (UpdateCustomerCommand as RelayCommand).NotifyCanExecuteChanged();
                 }
             }
         }
@@ -64,7 +66,7 @@ namespace HX0KAT_HFT_2021222.WPFClient
         {
             if (!IsInDesignMode)
             {
-                Customers = new RestCollection<Customer>("http://localhost:5236/", "customer", "hub");
+                Customers = new RestCollection<Customer>("http://localhost:5236/", "Customer", "hub");
                 CreateCustomerCommand = new RelayCommand(() =>
                 {
                     Customer customer = new Customer();
@@ -87,23 +89,34 @@ namespace HX0KAT_HFT_2021222.WPFClient
                 {
                     try
                     {
-                        Customers.Update(SelectedCustomer);
+                        CustomerEditorView CustomerEditor = new CustomerEditorView(SelectedCustomer);
+                        if (CustomerEditor.ShowDialog() == true)
+                        {
+                            Customers.Update(SelectedCustomer);
+                        }                        
                     }
                     catch (ArgumentException ex)
                     {
                         ErrorMessage = ex.Message;
                     }
-                });
-
-                DeleteCustomerCommand = new RelayCommand(() =>
-                {
-                    Customers.Delete(SelectedCustomer.Id);
                 },
                 () =>
                 {
                     return SelectedCustomer != null;
                 });
-                SelectedCustomer = null;
+
+                DeleteCustomerCommand = new RelayCommand(() =>
+                {
+                //Dispatcher.Invoke((Action)(() =>
+                // Dispatcher.CurrentDispatcher.Invoke((Action)(() =>
+                Customers.Delete(SelectedCustomer.Id);
+                    //));
+                },
+                () =>
+                {
+                    return SelectedCustomer != null;
+                });
+                SelectedCustomer = new Customer();
             }
         }
     }

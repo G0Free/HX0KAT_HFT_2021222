@@ -14,13 +14,13 @@
     <Grid>
         <StackPanel x:Name="stackpanel">
             <Label Content="Id" Background="LightBlue" Padding="5"></Label>
-            <TextBox Padding="5"></TextBox>
+            <TextBox Text="{Binding Id}" Padding="5"></TextBox>
             <Label Content="FirstName" Background="LightBlue" Padding="5"></Label>
-            <TextBox Padding="5"></TextBox>
+            <TextBox Text="{Binding FirstName}" Padding="5"></TextBox>
             <Label Content="LastName" Background="LightBlue" Padding="5"></Label>
-            <TextBox Padding="5"></TextBox>
+            <TextBox Text="{Binding LastName}" Padding="5"></TextBox>
             <Label Content="Email" Background="LightBlue" Padding="5"></Label>
-            <TextBox Padding="5"></TextBox>
+            <TextBox Text="{Binding Email}" Padding="5"></TextBox>
             <Button Content="Save" Click="Button_Click" Padding="5"></Button>
         </StackPanel>
     </Grid>
