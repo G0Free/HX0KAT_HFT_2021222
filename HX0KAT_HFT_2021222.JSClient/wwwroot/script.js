@@ -57,7 +57,7 @@ function display() {
             "<td>" + t.firstName + "</td>" +
             "<td>" + t.lastName + "</td>" +
             "<td>" + t.email + "</td>" +
-            `<td><button type="button" onclick="remove(${t.id})">Delete</button>` +
+            `<td id='actionbuttons'><button type="button" onclick="remove(${t.id})">Delete</button>` +
             `<button type="button" onclick="showupdate(${t.id})">Update</button>`
             + "</td></tr>";
     });
