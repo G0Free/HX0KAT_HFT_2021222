@@ -6,7 +6,35 @@
     <link href="style.css" rel="stylesheet" />
 </head>
 <body>
+    <h1>Customer Catalog</h1>
 
+    <div id="formdiv">
+        <label>Firstname</label>
+        <input type="text" id="firstname" value="" />
+
+        <label>Lastname</label>
+        <input type="text" id="lastname" value="" />
+
+        <label>Email</label>
+        <input type="text" id="email" value="" />
+
+        <button type="button" onclick="create()">Add Customer</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+
+        </tbody>
+    </table>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
     <script src="script.js"></script>

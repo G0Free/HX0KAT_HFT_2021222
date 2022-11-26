@@ -77,7 +77,7 @@ namespace HX0KAT_HFT_2021222.Endpoint
                 .AllowCredentials()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-                .WithOrigins("http://localhost:12307"));
+                .WithOrigins("http://localhost:42397"));
 
             app.UseRouting();
 
