@@ -1,4 +1,8 @@
-﻿table {
+﻿body {
+    margin: 20px;
+}
+
+table {
     width: 100%;
     border-collapse: collapse;
 }
@@ -18,14 +22,33 @@ th {
 #formdiv {
     display: flex;
     flex-direction: column;
+    padding: 20px;
     margin-bottom: 40px;
+    background-color: #dfe6e8;
 }
 
-#formdiv label, button, input {
-    margin: 2px;
-    padding: 5px;
+    #formdiv label, button, input {
+        margin: 2px;
+        padding: 5px;
+    }
+
+    #formdiv label {
+        font-weight: bolder;
+    }
+
+#updateformdiv {
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    margin-bottom: 40px;
+    background-color: #afe3b0
 }
 
-#formdiv label {
-    font-weight: bolder;
-}
+    #updateformdiv label, button, input {
+        margin: 2px;
+        padding: 5px;
+    }
+
+    #updateformdiv label {
+        font-weight: bolder;
+    }

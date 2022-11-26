@@ -3,6 +3,7 @@ let connection = null;
 getdata();
 setupSignalR();
 
+let customerIdToUpdate = -1;
 
 function setupSignalR() {
     connection = new signalR.HubConnectionBuilder()
@@ -15,6 +16,10 @@ function setupSignalR() {
     });
 
     connection.on("CustomerDeleted", (user, message) => {
+        getdata();
+    });
+
+    connection.on("CustomerUpdated", (user, message) => {
         getdata();
     });
 
@@ -52,7 +57,8 @@ function display() {
             "<td>" + t.firstName + "</td>" +
             "<td>" + t.lastName + "</td>" +
             "<td>" + t.email + "</td>" +
-            `<td><button type="button" onclick="remove(${t.id})">Delete</button>`
+            `<td><button type="button" onclick="remove(${t.id})">Delete</button>` +
+            `<button type="button" onclick="showupdate(${t.id})">Update</button>`
             + "</td></tr>";
     });
 }
@@ -80,6 +86,40 @@ function create() {
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
             {
+                firstName: firstname,
+                lastName: lastname,
+                email: email
+            }
+        )
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            getdata();
+        })
+        .catch((error) => { console.error('Error:', error); });
+}
+
+function showupdate(id) {
+    document.getElementById('firstnametoupdate').value = customers.find(t => t['id'] == id)['firstName'];
+    document.getElementById('lastnametoupdate').value = customers.find(t => t['id'] == id)['lastName'];
+    document.getElementById('emailtoupdate').value = customers.find(t => t['id'] == id)['email'];
+    customerIdToUpdate = id;
+
+    document.getElementById('updateformdiv').style.display = 'flex';
+}
+
+function update() {
+    document.getElementById('updateformdiv').style.display = 'none';
+    let firstname = document.getElementById('firstnametoupdate').value;
+    let lastname = document.getElementById('lastnametoupdate').value;
+    let email = document.getElementById('emailtoupdate').value;
+    fetch('http://localhost:5236/customer', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify(
+            {
+                id: customerIdToUpdate,
                 firstName: firstname,
                 lastName: lastname,
                 email: email
