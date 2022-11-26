@@ -28,6 +28,8 @@ namespace HX0KAT_HFT_2021222.JSClient
 
             app.UseRouting();
 
+            app.UseStaticFiles();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>
