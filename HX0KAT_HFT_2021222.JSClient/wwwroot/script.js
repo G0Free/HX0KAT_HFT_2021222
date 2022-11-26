@@ -49,9 +49,9 @@ function display() {
     customers.forEach(t => {
         document.getElementById('resultarea').innerHTML +=
             "<tr><td>" + t.id + "</td>" +
-        "<td>" + t.firstName + "</td>" +
-        "<td>" + t.lastName + "</td>" +
-        "<td>" + t.email + "</td>" +
+            "<td>" + t.firstName + "</td>" +
+            "<td>" + t.lastName + "</td>" +
+            "<td>" + t.email + "</td>" +
             `<td><button type="button" onclick="remove(${t.id})">Delete</button>`
             + "</td></tr>";
     });
@@ -75,13 +75,15 @@ function create() {
     let firstname = document.getElementById('firstname').value;
     let lastname = document.getElementById('lastname').value;
     let email = document.getElementById('email').value;
-    fetch('http://localhost:53910/customer', {
+    fetch('http://localhost:5236/customer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
-            { firstName: firstname },
-            { lastName: lastname },
-            { email: email }
+            {
+                firstName: firstname,
+                lastName: lastname,
+                email: email
+            }
         )
     })
         .then(response => response)
